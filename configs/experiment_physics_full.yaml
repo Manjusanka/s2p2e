@@ -4,6 +4,7 @@ artifacts_dir: artifacts
 
 data:
   shapenet_roots:
+    - shapenet
     - shapenet/models
     - shapenet/modelnet40_normal_resampled
   objaverse_root: objaverse/models

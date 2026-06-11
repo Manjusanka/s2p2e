@@ -3,77 +3,77 @@
     {
       "epoch": 1,
       "train": {
-        "loss": 0.2370149589183643,
-        "joint_pose_loss": 0.067187949896507,
-        "joint_tau_loss": 0.010289872630721522,
-        "joint_feasibility_loss": 0.05032246131165922
+        "loss": 0.17287962187081035,
+        "joint_pose_loss": 0.0528834555447731,
+        "joint_tau_loss": 0.011508518002249389,
+        "joint_feasibility_loss": 0.0054414717022759
       },
       "val": {
-        "loss": 0.00916819100050216,
-        "joint_pose_loss": 0.0003930422024766697,
-        "joint_tau_loss": 0.007838850424803317,
-        "joint_feasibility_loss": 0.0003004280993952713
+        "loss": 0.008265453248491718,
+        "joint_pose_loss": 0.00013561289762475536,
+        "joint_tau_loss": 0.007843997856576202,
+        "joint_feasibility_loss": 2.9233734923966243e-05
       }
     },
     {
       "epoch": 2,
       "train": {
-        "loss": 0.008715839745681584,
-        "joint_pose_loss": 0.00023306272690257448,
-        "joint_tau_loss": 0.007905123245979761,
-        "joint_feasibility_loss": 0.00022305663287746982
+        "loss": 0.007947299237328228,
+        "joint_pose_loss": 8.032446466411281e-05,
+        "joint_tau_loss": 0.0076973612668001885,
+        "joint_feasibility_loss": 1.792931573338113e-05
       },
       "val": {
-        "loss": 0.008389700481549222,
-        "joint_pose_loss": 0.00021345122173017366,
-        "joint_tau_loss": 0.0076672207029100424,
-        "joint_feasibility_loss": 0.0001642525956490414
+        "loss": 0.007779810675721684,
+        "joint_pose_loss": 8.119175897634166e-05,
+        "joint_tau_loss": 0.007530876493547112,
+        "joint_feasibility_loss": 1.0717856073201633e-05
       }
     },
     {
       "epoch": 3,
       "train": {
-        "loss": 0.008417767345226163,
-        "joint_pose_loss": 0.00014371334396982467,
-        "joint_tau_loss": 0.007900241606346963,
-        "joint_feasibility_loss": 0.00017277144811499425
+        "loss": 0.007861728741177737,
+        "joint_pose_loss": 7.36448302697557e-05,
+        "joint_tau_loss": 0.007637161179479417,
+        "joint_feasibility_loss": 7.266171790276273e-06
       },
       "val": {
-        "loss": 0.008682313821020913,
-        "joint_pose_loss": 0.00018886978734294546,
-        "joint_tau_loss": 0.008033755195743226,
-        "joint_feasibility_loss": 0.00016389876366295714
+        "loss": 0.007686793138014359,
+        "joint_pose_loss": 6.003742836397847e-05,
+        "joint_tau_loss": 0.007503848066941525,
+        "joint_feasibility_loss": 5.66559650657702e-06
       }
     },
     {
       "epoch": 4,
       "train": {
-        "loss": 0.008285232453829242,
-        "joint_pose_loss": 0.00012435226882377204,
-        "joint_tau_loss": 0.00783894233150912,
-        "joint_feasibility_loss": 0.00014646669874175629
+        "loss": 0.007815952381344204,
+        "joint_pose_loss": 7.080817358386805e-05,
+        "joint_tau_loss": 0.007601562952064139,
+        "joint_feasibility_loss": 3.929825464228194e-06
       },
       "val": {
-        "loss": 0.00816420266563271,
-        "joint_pose_loss": 0.00014784950496718048,
-        "joint_tau_loss": 0.007659614591443158,
-        "joint_feasibility_loss": 0.00012207908560199902
+        "loss": 0.007596855071218063,
+        "joint_pose_loss": 5.094950254429191e-05,
+        "joint_tau_loss": 0.007442568928969127,
+        "joint_feasibility_loss": 2.875255691808181e-06
       }
     }
   ],
   "best": {
     "epoch": 4,
     "train": {
-      "loss": 0.008285232453829242,
-      "joint_pose_loss": 0.00012435226882377204,
-      "joint_tau_loss": 0.00783894233150912,
-      "joint_feasibility_loss": 0.00014646669874175629
+      "loss": 0.007815952381344204,
+      "joint_pose_loss": 7.080817358386805e-05,
+      "joint_tau_loss": 0.007601562952064139,
+      "joint_feasibility_loss": 3.929825464228194e-06
     },
     "val": {
-      "loss": 0.00816420266563271,
-      "joint_pose_loss": 0.00014784950496718048,
-      "joint_tau_loss": 0.007659614591443158,
-      "joint_feasibility_loss": 0.00012207908560199902
+      "loss": 0.007596855071218063,
+      "joint_pose_loss": 5.094950254429191e-05,
+      "joint_tau_loss": 0.007442568928969127,
+      "joint_feasibility_loss": 2.875255691808181e-06
     }
   }
 }
