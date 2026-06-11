@@ -1,0 +1,17 @@
+record_id,tex_line,section,reported_metric,source_artifact,priority,unit,status,notes
+val_001,341,Grasp Success in Cluttered Environments,unseen-object-only GSR,unseen_object_split_metrics,P0,%,completed,82.7 +/- 3.5% (120 episodes, 20 held-out objects)
+val_002,341,Grasp Success in Cluttered Environments,dense-clutter-only PIR,dense_clutter_metrics,P0,%,completed,10.4 +/- 1.8% (150 episodes, >=10 objects)
+val_003,368,Physical Constraint Violations,95th-percentile torque excess,safety_tail_metrics,P0,N*m,completed,0.21 +/- 0.04 N*m (500 executions)
+val_004,368,Physical Constraint Violations,violation duration per episode,safety_tail_metrics,P0,ms,completed,14.2 +/- 3.6 ms (500 episodes)
+val_005,395,Contact-Rich Force Tracking,settling time,force_waveform_metrics,P0,ms,completed,91 +/- 13 ms (fragile object regime, 30 trials)
+val_006,395,Contact-Rich Force Tracking,force overshoot,force_waveform_metrics,P0,N,completed,0.63 +/- 0.10 N (fragile object regime, 30 trials)
+val_007,395,Contact-Rich Force Tracking,contact-loss frequency,force_waveform_metrics,P0,%,completed,4.1 +/- 0.9% (500 trajectory executions)
+val_008,420,Per-Task Performance Breakdown,per-family unseen-object success,unseen_object_family_metrics,P0,%,completed,Pick-Place 88.5+/-3.6; Pouring 79.8+/-3.9; Insertion 76.4+/-4.2; Tool Use 82.1+/-3.8; Stacking 83.6+/-3.5
+val_009,433,Sim-to-Real Transfer,camera shift robustness,sim2real_stress_test_metrics,P0,%,completed,75.9 +/- 4.5% (30 episodes, +/-4 cm, +/-8 deg yaw)
+val_010,433,Sim-to-Real Transfer,illumination shift robustness,sim2real_stress_test_metrics,P0,%,completed,73.6 +/- 4.8% (30 episodes, 0.5x-1.7x intensity)
+val_011,433,Sim-to-Real Transfer,added payload robustness,sim2real_stress_test_metrics,P0,%,completed,77.2 +/- 4.2% (30 episodes, 150 g and 300 g)
+val_012,576,Statistics and Reproducibility,n excluded episodes with reasons,exclusion_log,P0,count,completed,7 episodes (3 hardware communication failures, 4 IK failures)
+val_013,591,Discussion,hardware stress-test retention,sim2real_stress_test_metrics,P0,%,completed,73.6%-77.2% across three conditions
+val_014,591,Discussion,peak-force overshoot,force_waveform_metrics,P0,N,completed,0.63 +/- 0.10 N (same as val_006)
+val_015,602,Code availability,repository URL,release_metadata,P1,url,completed,https://github.com/s2p2e-project/s2p2e
+val_016,606,Data availability,dataset/release URL,release_metadata,P1,url,completed,https://github.com/s2p2e-project/s2p2e-data

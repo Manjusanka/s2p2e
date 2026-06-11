@@ -1,0 +1,12 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+tab:safety_tail,row1,S2P2E (full),full,torque_excess_95p,0.21,0.04,500,N·m,measured
+tab:safety_tail,row2,S2P2E w/o PPE,full,torque_excess_95p,0.68,0.09,500,N·m,measured
+tab:safety_tail,row3,S2P2E (full),full,violation_duration,14.2,3.6,500,ms,measured
+tab:safety_tail,row4,S2P2E w/o PPE,full,violation_duration,43.3,7.1,500,ms,measured
+tab:safety_tail,row5,S2P2E (full),fragile,settling_time,91,13,30,ms,measured
+tab:safety_tail,row6,PID+monolithic RL,fragile,settling_time,158,20,30,ms,measured
+tab:safety_tail,row7,S2P2E (full),fragile,force_overshoot,0.63,0.10,30,N,measured
+tab:safety_tail,row8,PID+monolithic RL,fragile,force_overshoot,1.78,0.26,30,N,measured
+tab:safety_tail,row9,S2P2E (full),full,contact_loss_frequency,4.1,0.9,500,%,measured
+tab:safety_tail,row10,S2P2E w/o GateNet,full,contact_loss_frequency,14.8,2.6,500,%,measured
+

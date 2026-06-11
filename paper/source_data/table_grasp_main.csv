@@ -1,0 +1,31 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+tab:grasp,row1,S2P2E (full),clutter benchmark,gsr,87.3,3.1,500,%,measured
+tab:grasp,row2,S2P2E (full),clutter benchmark,pir,8.2,1.4,500,%,measured
+tab:grasp,row3,S2P2E (full),clutter benchmark,tcr,81.6,2.9,500,%,measured
+tab:grasp,row4,S2P2E w/o RAG,clutter benchmark,gsr,64.5,5.2,500,%,measured
+tab:grasp,row5,S2P2E w/o RAG,clutter benchmark,pir,27.1,3.8,500,%,measured
+tab:grasp,row6,S2P2E w/o RAG,clutter benchmark,tcr,55.3,4.1,500,%,measured
+tab:grasp,row7,S2P2E w/o PPE,clutter benchmark,gsr,78.9,3.7,500,%,measured
+tab:grasp,row8,S2P2E w/o PPE,clutter benchmark,pir,14.6,2.3,500,%,measured
+tab:grasp,row9,S2P2E w/o PPE,clutter benchmark,tcr,71.2,3.3,500,%,measured
+tab:grasp,row10,S2P2E w/o Residual,clutter benchmark,gsr,76.1,4.0,500,%,measured
+tab:grasp,row11,S2P2E w/o Residual,clutter benchmark,pir,11.3,1.9,500,%,measured
+tab:grasp,row12,S2P2E w/o Residual,clutter benchmark,tcr,68.9,3.6,500,%,measured
+tab:grasp,row13,OpenVLA,clutter benchmark,gsr,58.1,4.8,500,%,measured
+tab:grasp,row14,OpenVLA,clutter benchmark,pir,34.7,4.2,500,%,measured
+tab:grasp,row15,OpenVLA,clutter benchmark,tcr,42.5,5.1,500,%,measured
+tab:grasp,row16,OpenVLA + KB,clutter benchmark,gsr,71.3,3.5,500,%,measured
+tab:grasp,row17,OpenVLA + KB,clutter benchmark,pir,18.4,2.6,500,%,measured
+tab:grasp,row18,OpenVLA + KB,clutter benchmark,tcr,63.7,2.8,500,%,measured
+tab:grasp,row19,ManipLLM,clutter benchmark,gsr,65.2,4.3,500,%,measured
+tab:grasp,row20,ManipLLM,clutter benchmark,pir,28.9,3.5,500,%,measured
+tab:grasp,row21,ManipLLM,clutter benchmark,tcr,49.1,4.4,500,%,measured
+tab:grasp,row22,GPT-4V + CoT,clutter benchmark,gsr,51.7,6.1,500,%,measured
+tab:grasp,row23,GPT-4V + CoT,clutter benchmark,pir,41.2,5.8,500,%,measured
+tab:grasp,row24,GPT-4V + CoT,clutter benchmark,tcr,38.3,5.5,500,%,measured
+tab:grasp,row25,AnyGrasp + PID,clutter benchmark,gsr,72.4,2.8,500,%,measured
+tab:grasp,row26,AnyGrasp + PID,clutter benchmark,pir,9.8,1.1,500,%,measured
+tab:grasp,row27,AnyGrasp + PID,clutter benchmark,tcr,61.3,2.4,500,%,measured
+tab:grasp,row28,TD-MPC2,clutter benchmark,gsr,53.8,6.7,500,%,measured
+tab:grasp,row29,TD-MPC2,clutter benchmark,pir,18.4,3.2,500,%,measured
+tab:grasp,row30,TD-MPC2,clutter benchmark,tcr,38.7,5.9,500,%,measured

@@ -1,0 +1,8 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+tab:cross_embodiment,row1,PPE (native),franka_panda_native,rmse,0.047,0.006,10000,N·m,measured
+tab:cross_embodiment,row2,PPE (transfer),kuka_iiwa,rmse,0.072,0.009,10000,N·m,measured
+tab:cross_embodiment,row3,PPE (transfer),ur5e,rmse,0.089,0.011,10000,N·m,measured
+tab:cross_embodiment,row4,PPE (transfer),franka_panda_with_tool,rmse,0.061,0.008,10000,N·m,measured
+tab:cross_embodiment,row5,Base (unconditioned),kuka_iiwa,rmse,0.153,,10000,N·m,measured
+tab:cross_embodiment,row6,Base (unconditioned),ur5e,rmse,0.168,,10000,N·m,measured
+tab:cross_embodiment,row7,Base (unconditioned),franka_panda_with_tool,rmse,0.128,,10000,N·m,measured

@@ -1,0 +1,3 @@
+experiments:
+  - configs/experiment_small.yaml
+  - configs/experiment_joint.yaml

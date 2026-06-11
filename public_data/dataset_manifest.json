@@ -1,0 +1,16 @@
+{
+  "droid": {
+    "official_doc": "https://droid-dataset.github.io/droid/the-droid-dataset",
+    "sample_download": "gsutil -m cp -r gs://gresearch/robotics/droid_100 <target_dir>",
+    "notes": "RLDS debug subset is 2GB; full RLDS is 1.7TB."
+  },
+  "rh20t": {
+    "official_doc": "https://rh20t.github.io/",
+    "api_repo": "https://github.com/rh20t/rh20t_api",
+    "notes": "Contains joint angles and joint torques; 320x180 resized RGB subsets start around 4.4GB-30.3GB per config."
+  },
+  "roboset": {
+    "official_doc": "https://www.tensorflow.org/datasets/catalog/robo_set",
+    "notes": "179.42 GiB dataset with state, state_velocity, images, and action."
+  }
+}

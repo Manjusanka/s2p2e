@@ -1,0 +1,61 @@
+seed: 42
+run_name: s2p2e_joint
+artifacts_dir: artifacts
+
+data:
+  shapenet_root: shapenet/models
+  objaverse_root: objaverse/models
+  cache_root: artifacts/cache
+  num_points: 512
+  shapenet_limit_per_category: 12
+  objaverse_limit: 48
+  train_ratio: 0.8
+  val_ratio: 0.1
+  tasks: [pick, place, insert, pour, tool_use]
+
+model:
+  embedding_dim: 512
+  retrieval_topk: 5
+  task_weights:
+    pick: [0.3, 0.5, 0.2]
+    place: [0.3, 0.4, 0.3]
+    insert: [0.2, 0.5, 0.3]
+    pour: [0.2, 0.4, 0.4]
+    tool_use: [0.3, 0.3, 0.4]
+  ppe_hidden_dim: 512
+  ppe_layers: 4
+  residual_history: 8
+  control_clip_ratio: 0.2
+
+training:
+  device: cpu
+  batch_size: 8
+  num_workers: 0
+  lr_layer1: 0.001
+  lr_layer2: 0.001
+  lr_layer3: 0.001
+  lr_joint: 0.0005
+  weight_decay: 0.0001
+  epochs_layer1: 3
+  epochs_layer2: 3
+  epochs_layer3: 3
+  epochs_joint: 3
+  lambda_pose: 5.0
+  lambda_gripper: 1.0
+  lambda_retrieval: 0.2
+  lambda_physics: 0.1
+  lambda_viol: 0.5
+  lambda_gate: 0.5
+  lambda_joint_pose: 3.0
+  lambda_joint_tau: 1.0
+  lambda_joint_feasibility: 0.5
+
+physics:
+  dof: 7
+  torque_limit: 12.0
+  trajectory_length: 24
+  num_trajectories: 128
+  history_length: 8
+
+evaluation:
+  batch_size: 8

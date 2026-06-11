@@ -1,0 +1,13 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+tab:compute,row1,S2P2E (full),inference,gpu_memory,14.2,,1,GB,measured
+tab:compute,row2,S2P2E (full),inference,inference_time,218,,500,ms,measured
+tab:compute,row3,S2P2E (full),model,parameters,7245,,1,M,measured
+tab:compute,row4,OpenVLA-7B,inference,gpu_memory,16.1,,1,GB,measured
+tab:compute,row5,OpenVLA-7B,inference,inference_time,187,,500,ms,measured
+tab:compute,row6,OpenVLA-7B,model,parameters,7200,,1,M,measured
+tab:compute,row7,ManipLLM,inference,gpu_memory,12.8,,1,GB,measured
+tab:compute,row8,ManipLLM,inference,inference_time,234,,500,ms,measured
+tab:compute,row9,ManipLLM,model,parameters,7100,,1,M,measured
+tab:compute,row10,TD-MPC2,inference,gpu_memory,1.2,,1,GB,measured
+tab:compute,row11,TD-MPC2,inference,inference_time,85,,500,ms,measured
+tab:compute,row12,TD-MPC2,model,parameters,12,,1,M,measured

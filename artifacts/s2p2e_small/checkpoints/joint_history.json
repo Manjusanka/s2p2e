@@ -1,0 +1,34 @@
+{
+  "history": [
+    {
+      "epoch": 1,
+      "train": {
+        "loss": 0.2553631638858835,
+        "joint_pose_loss": 0.07851936935584887,
+        "joint_tau_loss": 0.01029449280574393,
+        "joint_feasibility_loss": 0.019021125598671244
+      },
+      "val": {
+        "loss": 0.01377445464539859,
+        "joint_pose_loss": 0.0010576993744406435,
+        "joint_tau_loss": 0.010063526479320394,
+        "joint_feasibility_loss": 0.0010756598526818885
+      }
+    }
+  ],
+  "best": {
+    "epoch": 1,
+    "train": {
+      "loss": 0.2553631638858835,
+      "joint_pose_loss": 0.07851936935584887,
+      "joint_tau_loss": 0.01029449280574393,
+      "joint_feasibility_loss": 0.019021125598671244
+    },
+    "val": {
+      "loss": 0.01377445464539859,
+      "joint_pose_loss": 0.0010576993744406435,
+      "joint_tau_loss": 0.010063526479320394,
+      "joint_feasibility_loss": 0.0010756598526818885
+    }
+  }
+}

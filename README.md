@@ -1,0 +1,103 @@
+# S2P2E
+
+This repository contains the code, configurations, checkpoints, source-data exports, and review-scale data samples for **S2P2E: Physical Grounding for Language-Driven Robotic Manipulation**.
+
+The repository name is intentionally `s2p2e`, matching the manuscript availability statement and the planned GitHub repository:
+
+```text
+https://github.com/Manjusanka/s2p2e
+```
+
+## What Is Included
+
+- Layer I: retrieval-augmented pose generation with semantic, geometric, and operational tiers.
+- Layer II: Physics Prior Encoder (PPE) with embodiment-conditioned inverse-dynamics modeling.
+- Layer III: hierarchical residual control with `FrictionNet`, `LoadNet`, `NoiseNet`, and `GateNet`.
+- Policy bridge: PPE feature injection into an actor-critic policy, including a DROID conversion sanity check.
+- Experiment stack: staged training, joint training, ablations, task-family analysis, KB-tier analysis, and end-to-end pipeline execution.
+- Checkpoints: best checkpoints used by the review-scale reproduction under `artifacts/`.
+- Paper source data: machine-readable exports under `paper/source_data/`.
+- Local data subset: ShapeNet/ModelNet-style point clouds, Objaverse meshes tracked with Git LFS, DROID TFRecord shards, and converted DROID JSONL transitions.
+
+## Data Boundary
+
+The release includes the local review-scale data subset that is present in this workspace. Large Objaverse `.glb` files are tracked with Git LFS. Download caches, partial downloads, and generated retrieval arrays are excluded so the repository remains reproducible rather than cache-dependent.
+
+Use the scripts and manifests in `scripts/`, `configs/`, `docs/DATA_SOURCES.md`, and `public_data/dataset_manifest.json` to reconstruct larger assets under their original licenses.
+
+## Repository Layout
+
+```text
+s2p2e/
+  artifacts/       selected checkpoints and metric JSON files
+  configs/         experiment configurations
+  docs/            data, model-card, and reproducibility notes
+  paper/           source-data exports and manuscript audit notes
+  public_data/     DROID subset, converted JSONL transitions, and manifests
+  scripts/         download, convert, train, evaluate, and export utilities
+  src/             S2P2E source code
+  tests/           smoke and integration tests
+```
+
+## Quick Start
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run smoke training:
+
+```bash
+python scripts/train_all.py --config configs/experiment_small.yaml
+```
+
+Run the larger joint pipeline:
+
+```bash
+python scripts/train_all.py --config configs/experiment_g50.yaml
+```
+
+Run the full pipeline:
+
+```bash
+python scripts/run_full_pipeline.py
+```
+
+Run tests:
+
+```bash
+pytest tests -q
+```
+
+## Main Artifacts
+
+- S2P2E joint model: `artifacts/s2p2e_g50/checkpoints/joint_best.pt`
+- Layer checkpoints: `artifacts/s2p2e_g50/checkpoints/layer*_best.pt`
+- DROID policy bridge: `artifacts/actor_critic_droid/actor_critic_droid_best.pt`
+- Full-pipeline policy bridge: `artifacts/s2p2e_full_pipeline/policy_bridge_best.pt`
+- Experiment summaries: `artifacts/*/metrics/*.json`
+- Paper source data: `paper/source_data/*.csv`
+- Local 3D data subset: `shapenet/` and `objaverse/`
+- DROID subset: `public_data/droid_100/` and `public_data/droid_subset_jsonl/`
+
+## Data Notes
+
+The committed DROID files are a local subset for interface testing and review-scale reproduction. They are not a substitute for the complete DROID dataset.
+
+Objaverse meshes require Git LFS after cloning. For full-scale training beyond the included subset, use the manifests and reconstruction scripts described in [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md) and [docs/DATA_RELEASE.md](docs/DATA_RELEASE.md).
+
+## Documentation
+
+- [Architecture](docs/architecture.md)
+- [Data sources](docs/DATA_SOURCES.md)
+- [Data release notes](docs/DATA_RELEASE.md)
+- [Model cards](docs/MODEL_CARDS.md)
+- [Open-source checklist](docs/OPEN_SOURCE_CHECKLIST.md)
+- [Reproducibility](docs/REPRODUCIBILITY.md)
+- [Paper source data](paper/source_data/README.md)
+
+## License
+
+This repository is released under the MIT License. External datasets and third-party model assets keep their own licenses and terms.

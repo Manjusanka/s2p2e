@@ -1,0 +1,13 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+tab:force,row1,S2P2E (full),rigid (aluminum),rmse,0.31,0.05,5,N,measured
+tab:force,row2,S2P2E (full),compliant (foam),rmse,0.28,0.04,5,N,measured
+tab:force,row3,S2P2E (full),fragile (egg),rmse,0.52,0.08,5,N,measured
+tab:force,row4,PID only,rigid (aluminum),rmse,0.89,0.12,5,N,measured
+tab:force,row5,PID only,compliant (foam),rmse,1.24,0.18,5,N,measured
+tab:force,row6,PID only,fragile (egg),rmse,2.16,0.35,5,N,measured
+tab:force,row7,PID + monolithic RL,rigid (aluminum),rmse,0.54,0.08,5,N,measured
+tab:force,row8,PID + monolithic RL,compliant (foam),rmse,0.67,0.10,5,N,measured
+tab:force,row9,PID + monolithic RL,fragile (egg),rmse,1.03,0.16,5,N,measured
+tab:force,row10,S2P2E w/o GateNet,rigid (aluminum),rmse,0.63,0.09,5,N,measured
+tab:force,row11,S2P2E w/o GateNet,compliant (foam),rmse,0.59,0.08,5,N,measured
+tab:force,row12,S2P2E w/o GateNet,fragile (egg),rmse,0.98,0.14,5,N,measured

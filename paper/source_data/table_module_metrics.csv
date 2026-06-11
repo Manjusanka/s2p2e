@@ -1,0 +1,17 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+tab:module_metrics,layer1,Layer I (3D-Physics RAG),validation,pose_mae,0.0244254045,,1,absolute pose units,"artifacts/s2p2e_g50/metrics/paper_tables.json -> table_layer1.val.pose_mae"
+tab:module_metrics,layer1,Layer I (3D-Physics RAG),validation,pose_loss,0.0013778791,,1,loss,"artifacts/s2p2e_g50/metrics/paper_tables.json -> table_layer1.val.pose_loss"
+tab:module_metrics,layer1,Layer I (3D-Physics RAG),validation,retrieval_loss,2.0456856943,,1,loss,"artifacts/s2p2e_g50/metrics/paper_tables.json -> table_layer1.val.retrieval_loss"
+tab:module_metrics,layer2,Layer II (PPE),validation,rmse,0.0405780996,,1,N*m surrogate scale,"artifacts/s2p2e_g50/metrics/paper_tables.json -> table_layer2.val.rmse"
+tab:module_metrics,layer2,Layer II (PPE),validation,mse,0.0016543020,,1,loss,"artifacts/s2p2e_g50/metrics/paper_tables.json -> table_layer2.val.mse"
+tab:module_metrics,layer2,Layer II (PPE),validation,consistency,0.0007969334,,1,loss,"artifacts/s2p2e_g50/metrics/paper_tables.json -> table_layer2.val.consistency"
+tab:module_metrics,layer3,Layer III (Residual control),validation,residual_loss,0.0014493525,,1,loss,"artifacts/s2p2e_g50/metrics/paper_tables.json -> table_layer3.val.residual_loss"
+tab:module_metrics,layer3,Layer III (Residual control),validation,gate_loss,0.0723114759,,1,loss,"artifacts/s2p2e_g50/metrics/paper_tables.json -> table_layer3.val.gate_loss"
+tab:module_metrics,layer3,Layer III (Residual control),validation,command_norm,2.7321370443,,1,command norm,"artifacts/s2p2e_g50/metrics/paper_tables.json -> table_layer3.val.command_norm"
+tab:module_metrics,joint,Joint stack,validation,joint_loss,0.0491806775,,1,loss,"artifacts/s2p2e_g50/metrics/paper_tables.json -> table_main.full.val.loss"
+tab:module_metrics,joint,Joint stack,validation,joint_pose_loss,0.0131033304,,1,loss,"artifacts/s2p2e_g50/metrics/paper_tables.json -> table_main.full.val.joint_pose_loss"
+tab:module_metrics,joint,Joint stack,validation,joint_tau_loss,0.0098502427,,1,loss,"artifacts/s2p2e_g50/metrics/paper_tables.json -> table_main.full.val.joint_tau_loss"
+tab:module_metrics,policy_bridge,Policy bridge (DROID subset),validation,critic_loss,0.0000001798,,1134,loss,"artifacts/actor_critic_droid/actor_critic_droid_history.json -> history[-1].critic_loss"
+tab:module_metrics,policy_bridge,Policy bridge (DROID subset),validation,actor_loss,-0.0392137008,,1134,loss,"artifacts/actor_critic_droid/actor_critic_droid_history.json -> history[-1].actor_loss"
+tab:module_metrics,policy_bridge,Policy bridge (DROID subset),validation,contrastive_loss,0.6850655029,,1134,loss,"artifacts/actor_critic_droid/actor_critic_droid_history.json -> history[-1].contrastive_loss"
+

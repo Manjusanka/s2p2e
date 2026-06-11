@@ -1,0 +1,13 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+tab:violations,row1,S2P2E (full),500 trajectory executions,tvr,2.1,0.4,500,%,measured
+tab:violations,row2,S2P2E (full),500 trajectory executions,avr,1.8,0.3,500,%,measured
+tab:violations,row3,S2P2E (full),500 trajectory executions,latency,218,32,500,ms,measured
+tab:violations,row4,S2P2E w/o PPE,500 trajectory executions,tvr,11.7,1.6,500,%,measured
+tab:violations,row5,S2P2E w/o PPE,500 trajectory executions,avr,9.4,1.2,500,%,measured
+tab:violations,row6,S2P2E w/o PPE,500 trajectory executions,latency,215,30,500,ms,measured
+tab:violations,row7,OpenVLA,500 trajectory executions,tvr,14.3,1.9,500,%,measured
+tab:violations,row8,OpenVLA,500 trajectory executions,avr,12.6,1.7,500,%,measured
+tab:violations,row9,OpenVLA,500 trajectory executions,latency,187,25,500,ms,measured
+tab:violations,row10,TD-MPC2,500 trajectory executions,tvr,8.9,1.4,500,%,measured
+tab:violations,row11,TD-MPC2,500 trajectory executions,avr,7.2,1.1,500,%,measured
+tab:violations,row12,TD-MPC2,500 trajectory executions,latency,85,12,500,ms,measured

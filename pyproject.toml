@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "s2p2e-reproduction"
+version = "0.1.0"
+description = "Runnable reproduction scaffold for S2P2E"
+requires-python = ">=3.12"
+
+[tool.setuptools.packages.find]
+where = ["src"]

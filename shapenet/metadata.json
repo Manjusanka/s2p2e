@@ -1,0 +1,6 @@
+{
+  "source": "ModelNet40 (Pointcept HF)",
+  "total": 500,
+  "format": "txt (XYZ point cloud)",
+  "total_size_mb": 269.9
+}

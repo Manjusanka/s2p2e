@@ -1,0 +1,6 @@
+﻿table_or_figure_id,row_id,condition,operational_definition,primary_metrics,sample_unit,measured_size,provenance,status
+tab:stress_protocol,row1,camera_shift,"Wrist-camera extrinsics perturbed by ±4 cm translation and ±8° yaw relative to calibration","GSR; PIR; retention",hardware episode,30,measured,completed
+tab:stress_protocol,row2,illumination_shift,"Light intensity 0.5× to 1.7× nominal plus directional shadowing","GSR; detection failure rate",hardware episode,30,measured,completed
+tab:stress_protocol,row3,added_payload,"Payload increased by 150 g and 300 g with unchanged gains","GSR; TVR; settling time",hardware episode,30,measured,completed
+tab:stress_protocol,row4,dense_clutter,"Object count increased to 10–15 with reduced free approach volume","GSR; PIR; TCR",scene instance,150,measured,completed
+tab:stress_protocol,row5,unseen_objects,"Held-out categories absent from training and KB tuning","GSR; TCR",object-scene pair,120,measured,completed

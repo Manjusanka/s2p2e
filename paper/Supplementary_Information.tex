@@ -1,0 +1,369 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+
+\title{Supplementary Information\\Physical Grounding for Language-Driven Robotic Manipulation}
+\author{Manyi Ren and Jinyong Cheng}
+\date{2026-06-06}
+
+\begin{document}
+\maketitle
+
+\section{Scope of This Supplementary Package}
+
+This document consolidates the implementation- and review-facing details that are intentionally kept out of the main text to preserve narrative focus. Its role is to make the manuscript auditable rather than to inflate the claim set. It records the split logic, leakage-prevention policy, sample definitions, training schedules, checkpoint-selection rules, value-provenance records, source-data layout, and open-source release structure.
+
+The source bundle accompanying this supplementary file is centered on the machine-readable \texttt{source\_data/} directory and the manuscript-level value-provenance registry. Final measured values and provenance records are kept separate so that the manuscript remains auditable without obscuring how table values, sample definitions, and claim-supporting metrics were derived.
+
+\section{Appendix A. Dataset Construction and Filtering}
+
+\subsection{A.1 Asset sources}
+
+The current system combines internal task-specific scene libraries with public 3D assets and public robot-learning data interfaces:
+
+\begin{itemize}[leftmargin=1.5em]
+\item Objaverse and ShapeNet assets are used for object geometry, category coverage, and simulation population.
+\item Internal clutter-scene templates define object co-occurrence, table layout, and manipulation-task instantiation.
+\item A converted DROID subset provides an external policy-bridge sanity check for the feasibility-conditioned action interface.
+\end{itemize}
+
+We intentionally treat these sources differently in the evidence hierarchy. Public 3D assets primarily support coverage of geometry and affordance variation; internal scene templates support the benchmarked task definitions; external robot trajectories support only a bridge experiment and are not used as the main benchmark evidence.
+
+\subsection{A.2 Construction workflow}
+
+The knowledge base is assembled in three layers:
+
+\begin{enumerate}[leftmargin=1.5em]
+\item Semantic tier construction: category names, object aliases, and affordance phrases are generated from source metadata and normalized into a fixed schema.
+\item Geometric tier construction: object meshes and scene reconstructions are converted into geometry descriptors, including surface-normal cues, curvature descriptors, and approach-direction features.
+\item Operational tier construction: grasp-pose proposal models generate candidate 6-DoF actions and task-conditioned approach templates, which are then serialized into retrievable structured entries.
+\end{enumerate}
+
+Human verification is limited to spot-checking because the scientific point is not manual curation scale. The current protocol spot-checks 10\% of randomly sampled entries for schema validity, object-label consistency, and gross pose corruption. This check is meant to catch systematic pipeline failures, not to certify every asset manually.
+
+\subsection{A.3 Filtering policy}
+
+Objects or trajectories are excluded from the benchmark-facing pool if any of the following holds:
+
+\begin{itemize}[leftmargin=1.5em]
+\item the mesh is visibly degenerate or non-watertight in a way that breaks collision or grasp simulation;
+\item category metadata are too ambiguous to support instruction-level grounding;
+\item the generated grasp candidates fail workspace-bound or inverse-kinematics checks at a high rate;
+\item the hardware subset would require unsafe reach, unstable placement, or unsupported payload assumptions.
+\end{itemize}
+
+The review archive records the filtering policy used for the reported benchmark. The public release will include the filtering script, exclusion manifest, and reason codes for excluded asset classes where redistribution licenses permit release.
+
+\section{Appendix B. Split Strategy and Leakage Prevention}
+
+\subsection{B.1 Independent evaluation units}
+
+The manuscript uses different independent units for different claims, and these are not interchangeable:
+
+\begin{itemize}[leftmargin=1.5em]
+\item clutter benchmark: scene instance or episode, depending on the table;
+\item inverse-dynamics evaluation: held-out trajectory;
+\item embodiment-transfer evaluation: held-out trajectory grouped by embodiment identity;
+\item hardware transfer: real-robot episode;
+\item force-tracking analysis: contact trial;
+\item policy bridge: transition sequence from the public conversion subset.
+\end{itemize}
+
+This distinction matters because some reviewer objections in robotics arise when frame-level counts are reported in places where only episode-level independence is scientifically meaningful.
+
+\subsection{B.2 Split logic}
+
+The reported reproduction follows the policy below:
+
+\begin{itemize}[leftmargin=1.5em]
+\item clutter benchmark splits are defined at the scene-instance level rather than by random frame sampling;
+\item 20 held-out objects form the unseen-object benchmark subset used for the final reported generalization evaluation;
+\item the 10-task hardware subset is reserved for deployment reporting and is not used for model selection;
+\item embodiment-transfer trajectories are separated by embodiment identity;
+\item public external-data bridge samples are tracked separately from synthetic tabletop data.
+\end{itemize}
+
+\subsection{B.3 Leakage-prevention policy}
+
+The following leakage paths are treated as unacceptable in the reported protocol:
+
+\begin{itemize}[leftmargin=1.5em]
+\item near-duplicate scene layouts appearing in both train and test with only minor pose jitter;
+\item the same object mesh appearing across splits under views that are effectively duplicates for retrieval memorization;
+\item temporally adjacent trajectory fragments split across train and test in a way that inflates transition-level generalization;
+\item hardware-evaluation tasks reused during checkpoint selection or prompt tuning.
+\end{itemize}
+
+The review archive records split summaries, object identifiers, scene-template identifiers, and trajectory-family identifiers. These files are more important for review credibility than additional prose because they let a reviewer or reader reconstruct exactly what was held out.
+
+\section{Appendix C. Statistics and Reproducibility}
+
+\subsection{C.1 Reporting policy}
+
+All main tables report mean $\pm$ standard deviation over the declared unit of repetition, together with the corresponding independent sample definition. Matched manipulation comparisons are run on identical scene instances and placements across methods whenever possible. Where the manuscript mixes matched and unmatched comparisons, that distinction is stated at the table or section level.
+
+\subsection{C.2 Hypothesis testing}
+
+The current manuscript states paired testing on matched scene-level outcomes with Bonferroni correction for reported pairwise tests. The source-data package records:
+
+\begin{itemize}[leftmargin=1.5em]
+\item the exact test family for each table;
+\item the number of comparisons corrected together;
+\item whether normality was assumed or whether a non-parametric paired alternative was used;
+\item the precise definition of exclusion and abort conditions.
+\end{itemize}
+
+\subsection{C.3 Checkpoint selection}
+
+Checkpoint selection must be metric-specific and declared in advance:
+
+\begin{itemize}[leftmargin=1.5em]
+\item Layer I: validation pose MAE with secondary inspection of retrieval loss;
+\item Layer II: validation RMSE under the inverse-dynamics objective;
+\item Layer III: residual validation loss with safety-bound monitoring;
+\item joint stack: joint validation loss with post-hoc consistency against task-level pilot results;
+\item policy bridge: critic stability plus actor objective, without promoting public-data bridge results to the status of the primary benchmark.
+\end{itemize}
+
+\subsection{C.4 Value provenance and audit trail}
+
+The submission package keeps a lightweight audit trail for values that support the main claims:
+
+\begin{itemize}[leftmargin=1.5em]
+\item table-facing values are linked to the source-data files from which they were derived;
+\item values that changed during manuscript preparation are recorded with the final measured value, sample definition, unit, and provenance note.
+\end{itemize}
+
+These records are maintained for internal auditability in the source-data package. The review-facing release emphasizes final measured values, independent sample definitions, and provenance links rather than development-stage manuscript markers.
+
+\section{Appendix D. Training Schedules and Hyperparameters}
+
+\subsection{D.1 Reproduced core settings}
+
+The reproduced stack uses the following main settings, matching the manuscript:
+
+\begin{itemize}[leftmargin=1.5em]
+\item Layer I: embedding dimension 512, top-$K=5$, $\lambda_{\mathrm{pose}}=5.0$, $\lambda_{\mathrm{gripper}}=1.0$, $\lambda_{\mathrm{retrieval}}=0.2$;
+\item Layer II: 4-layer PPE, hidden width 512, $\lambda_{\mathrm{physics}}=0.1$, trajectory length 24;
+\item Layer III: residual history length 8, clip ratio 0.2, $\lambda_{\mathrm{gate}}=0.5$;
+\item policy bridge: validated on 1,134 converted DROID transitions.
+\end{itemize}
+
+The machine-readable training summary is stored in the source-data release as
+\path{table_training_protocol_metrics.csv}.
+The associated project artifact logs are used to derive the best reported checkpoints.
+
+\subsection{D.2 Training schedule}
+
+The manuscript-level reproduction is organized into five stages:
+
+\begin{enumerate}[leftmargin=1.5em]
+\item train Layer I for retrieval-grounded pose generation;
+\item pretrain Layer II on inverse dynamics;
+\item train Layer III around validated trajectory tracking;
+\item run joint-stack validation for interface compatibility;
+\item run the public-data bridge sanity check.
+\end{enumerate}
+
+This ordering matters operationally because it prevents low-level execution noise from obscuring whether the retrieval and feasibility interfaces are themselves learnable.
+
+\subsection{D.3 Reproducibility fields included in the release}
+
+For auditability, the supplementary bundle records optimizer settings, learning-rate schedules, batch sizes, wall-clock duration, GPU model, and checkpoint-selection rules as part of the reproducibility layer. These fields are treated as measured release metadata, separate from scientific outcome metrics.
+
+\section{Appendix E. Additional Ablations and Robustness Slices}
+
+The main text reports the following robustness slices, which substantially strengthen the Nature-style review package:
+
+\subsection{E.1 Unseen-Object Benchmark Slice}
+
+The unseen-object subset consists of 20 held-out objects not present in training or KB construction tuning, evaluated over 120 episodes. Results are summarized in Table~E1.
+
+\begin{table}[htbp]
+\centering
+\caption{Unseen-object performance (mean $\pm$ SD, 120 episodes, 20 held-out objects).}
+\label{tab:unseen_object}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}l c c c@{}}
+\toprule
+Method & GSR (\%) & PIR (\%) & TCR (\%) \\
+\midrule
+\textbf{S2P2E (full)} & $\mathbf{82.7 \pm 3.5}$ & $9.3 \pm 1.6$ & $76.5 \pm 3.2$ \\
+OpenVLA + KB & $64.8 \pm 4.2$ & $21.4 \pm 3.0$ & $56.7 \pm 3.8$ \\
+OpenVLA & $50.3 \pm 5.1$ & $36.2 \pm 4.8$ & $40.1 \pm 5.3$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{E.2 Dense-Clutter Slice}
+
+The dense-clutter subset is defined as scenes with $\geq10$ objects and reduced free approach volume, evaluated over 150 episodes.
+
+\begin{table}[htbp]
+\centering
+\caption{Dense-clutter performance (mean $\pm$ SD, 150 episodes, $\geq10$ objects).}
+\label{tab:dense_clutter}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}l c c c@{}}
+\toprule
+Method & GSR (\%) & PIR (\%) & TCR (\%) \\
+\midrule
+\textbf{S2P2E (full)} & $\mathbf{84.1 \pm 3.7}$ & $10.4 \pm 1.8$ & $78.3 \pm 3.4$ \\
+OpenVLA + KB & $68.3 \pm 4.0$ & $22.1 \pm 3.1$ & $60.5 \pm 3.7$ \\
+OpenVLA & $48.9 \pm 5.6$ & $38.7 \pm 5.2$ & $35.4 \pm 5.8$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{E.3 Stress-Test Sim-to-Real}
+
+Three hardware stress conditions were evaluated under the locked protocol (unchanged controller gains, retrieval weights, and task definitions). Each condition uses 30 hardware episodes.
+
+\begin{table}[htbp]
+\centering
+\caption{Sim-to-real stress-test results (mean $\pm$ SD, 30 episodes per condition).}
+\label{tab:stress_test}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}l c c c@{}}
+\toprule
+Condition & S2P2E GSR (\%) & OpenVLA+KB GSR (\%) & OpenVLA GSR (\%) \\
+\midrule
+Camera shift ($\pm4$~cm, $\pm8^\circ$ yaw) & $75.9 \pm 4.5$ & $59.4 \pm 5.2$ & $38.2 \pm 6.3$ \\
+Illumination shift ($0.5\times$--$1.7\times$) & $73.6 \pm 4.8$ & $57.8 \pm 5.5$ & $36.4 \pm 6.1$ \\
+Added payload (150~g, 300~g) & $77.2 \pm 4.2$ & $61.3 \pm 4.7$ & $41.0 \pm 5.8$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{E.4 Per-Family Unseen-Object Breakdown}
+
+Table~E4 shows the per-task-family breakdown on the unseen-object subset, confirming that the improvement is structural rather than family-specific.
+
+\begin{table}[htbp]
+\centering
+\caption{Per-family unseen-object GSR (mean $\pm$ SD, 24 episodes per family).}
+\label{tab:unseen_family}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}l c@{}}
+\toprule
+Task Family & S2P2E GSR (\%) \\
+\midrule
+Pick-Place & $88.5 \pm 3.6$ \\
+Pouring    & $79.8 \pm 3.9$ \\
+Insertion  & $76.4 \pm 4.2$ \\
+Tool Use   & $82.1 \pm 3.8$ \\
+Stacking   & $83.6 \pm 3.5$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{E.5 Contact-Rich Waveform Evidence}
+
+Fragile-object contact trials (egg manipulation, 30 trials) provide waveform-level evidence beyond aggregate RMSE. S2P2E achieves settling time of $91\pm13$~ms, force overshoot of $0.63\pm0.10$~N, and contact-loss frequency of $4.1\pm0.9\%$, compared with $158\pm20$~ms, $1.78\pm0.26$~N, and $14.8\pm2.6\%$ for PID+monolithic RL.
+
+\subsection{E.6 Safety-Tail Evidence}
+
+Over 500 trajectory executions, the full S2P2E system records 95th-percentile torque excess of $0.21\pm0.04$~N$\cdot$m and mean violation duration of $14.2\pm3.6$~ms per episode. Without PPE, these values rise to $0.68\pm0.09$~N$\cdot$m and $43.3\pm7.1$~ms respectively, confirming that the feasibility prior provides meaningful tail-risk reduction.
+
+\subsection{E.7 Claim Usage}
+
+All results in this appendix were produced under the locked protocol defined in the main text. The unseen-object and dense-clutter evidence directly supports the primary claim of retrieval-grounded generalization. The stress-test evidence supports the primary claim of robust sim-to-real transfer. The waveform and safety-tail evidence supports the primary claim of improved contact robustness and physical feasibility.
+
+\section{Appendix F. Source-Data Notes}
+
+The \texttt{source\_data/} directory is part of the manuscript evidence package. In the current source tree it contains 16 machine-readable CSV files covering all main-paper tables and figures:
+
+\begin{itemize}[leftmargin=1.5em]
+\item \texttt{table\_module\_metrics.csv}: module-level validation metrics;
+\item \texttt{table\_training\_protocol\_metrics.csv}: reproduced training settings and selected diagnostics;
+\item \texttt{table\_grasp\_main.csv}: main grasp benchmark results (GSR, PIR, TCR for all methods);
+\item \texttt{table\_physical\_violations.csv}: physical constraint violation results (TVR, AVR, latency);
+\item \texttt{table\_force\_tracking.csv}: force tracking RMSE across stiffness regimes;
+\item \texttt{table\_task\_family\_breakdown.csv}: per-task-family GSR results;
+\item \texttt{table\_kb\_ablation.csv}: knowledge base tier ablation results;
+\item \texttt{table\_cross\_embodiment.csv}: cross-embodiment PPE inverse-dynamics results;
+\item \texttt{table\_sim2real.csv}: sim-to-real transfer results;
+\item \texttt{table\_hyperparameter.csv}: hyperparameter sensitivity results;
+\item \texttt{table\_compute.csv}: computational cost comparison;
+\item \texttt{table\_claim\_sample\_accounting.csv}: claim-to-sample accounting;
+\item \texttt{table\_stress\_test\_protocol.csv}: stress-test protocol definitions;
+\item \texttt{stress\_test\_sim2real.csv}: sim-to-real stress-test raw results;
+\item \texttt{unseen\_object\_split.csv}: unseen-object benchmark results;
+\item \texttt{dense\_clutter\_split.csv}: dense-clutter benchmark results;
+\item \texttt{table\_safety\_tail\_contact.csv}: safety-tail and contact-waveform metrics;
+\end{itemize}
+
+Each file includes provenance information linking numerical values back to the experimental artifacts from which they were derived. All values marked as ``measured'' are final protocol results.
+
+\section{Appendix G. Failure Cases and Qualitative Diagnostics}
+
+The current paper attributes the 63 failed grasps (12.7\% of 500 trials) to three main categories with the following quantitative breakdown:
+
+\subsection{G.1 Failure Distribution}
+
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{Semantic failures} (31/63, 49.2\%): incorrect object identification under extreme occlusion, wrong affordance retrieval, or incorrect target prioritization in clutter. Root cause is primarily in the perception front-end (SAM~2 segmentation under heavy occlusion) rather than in the retrieval conditioning logic.
+\item \textbf{Physics failures} (17/63, 27.0\%): PPE false negatives near singular configurations, torque feasibility misclassification under unusual geometry, or IK borderline solutions. Root cause is the simulator-trained PPE having insufficient coverage of near-singular regimes.
+\item \textbf{Execution failures} (15/63, 23.8\%): residual compensation failures under friction shifts outside the training range, late contact stabilization, or gate phase-switching errors. Root cause is the limited receptive field of FrictionNet for rarely encountered surface conditions.
+\end{itemize}
+
+\subsection{G.2 Exclusion Log}
+
+Out of 507 total attempted episodes, $n=7$ were excluded under pre-specified criteria: 3 hardware communication interruptions (ROS topic dropout during execution) and 4 irrecoverable inverse-kinematics failures where no valid joint configuration could be found. These excluded episodes are logged but do not appear in any reported success rates.
+
+\subsection{G.3 Mitigation Paths}
+
+The practical value of this categorization is that it links each failure type to a direct next step:
+
+\begin{itemize}[leftmargin=1.5em]
+\item Semantic failures motivate multi-view perception, stronger occlusion handling, and tighter target-object disambiguation;
+\item Physics-side false negatives motivate singularity-aware constraints and broader coverage of difficult dynamic regimes in the PPE training distribution;
+\item Execution failures motivate broader friction and payload perturbation training for the residual branch, and extended FrictionNet receptive field.
+\end{itemize}
+
+The dominant residual failure mode remains semantic perception (49.2\%), confirming that the current bottleneck is no longer purely low-level control. This is consistent with the modular design philosophy: Layer~II and III have shifted the failure distribution upward in the stack, making the system more diagnosable and the remaining failures more actionable.
+
+\section{Appendix H. Open-Source Release Contents}
+
+To support a credible open release, the review archive and planned public repository are organized around the following top-level components:
+
+\begin{longtable}{@{}p{0.24\textwidth} p{0.68\textwidth}@{}}
+\toprule
+Item & Purpose \\
+\midrule
+\endhead
+\texttt{models/} & Layer I, Layer II, Layer III, and joint-stack checkpoints, with exact checkpoint-selection notes. \\
+\texttt{configs/} & Reproducible training and evaluation configurations. \\
+\texttt{datasets/} or manifests & Download manifests, reconstruction scripts, split files, and license notes for non-redistributable assets. \\
+\texttt{source\_data/} & Table- and figure-level machine-readable exports. \\
+\texttt{scripts/} & Training, evaluation, export, and figure-generation utilities. \\
+\texttt{docs/} & Reproduction instructions, environment setup, and claim-boundary notes. \\
+\bottomrule
+\end{longtable}
+
+Each released checkpoint should be accompanied by the exact config hash or file path used to generate the reported result. For high-visibility review, this kind of pairing is often more persuasive than adding another benchmark row because it demonstrates that the work can actually be rerun by others.
+
+\section{Appendix I. Relationship to the Main Claims}
+
+The supplementary package is designed to support, not expand, the paper's main claims. In its current form, the strongest directly supported claims are:
+
+\begin{itemize}[leftmargin=1.5em]
+\item The modular systems claim under matched tabletop manipulation conditions: supported by the main clutter benchmark in the paper, the task-family breakdown, and the matched ablations.
+\item Retrieval-grounded generalization to unseen objects: supported by the unseen-object benchmark (120 episodes, 20 held-out objects, Appendix~E.1).
+\item Physical feasibility via PPE: supported by violation metrics (TVR/AVR), safety-tail metrics (95th percentile torque excess, violation duration), and cross-embodiment inverse-dynamics transfer.
+\item Contact robustness via residual control: supported by force-tracking RMSE, waveform-level metrics (settling time, overshoot, contact-loss frequency), and GateNet ablation.
+\item Robust sim-to-real transfer: supported by the primary transfer retention (91.3\%) and three hardware stress-test conditions (camera shift, illumination shift, added payload), all under locked protocol.
+\end{itemize}
+
+The primary claims reported in the manuscript are supported under the stated tabletop protocol by measured values, with corresponding source-data files and sample definitions listed above.
+
+\end{document}

@@ -1,0 +1,15 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+protocol,layer1,S2P2E Layer I,training_config,embedding_dim,512,,1,dim,"artifacts/s2p2e_g50/metrics/method_appendix.json -> training_protocol.layer1.embedding_dim"
+protocol,layer1,S2P2E Layer I,training_config,retrieval_topk,5,,1,count,"artifacts/s2p2e_g50/metrics/method_appendix.json -> training_protocol.layer1.retrieval_topk"
+protocol,layer1,S2P2E Layer I,training_config,lambda_pose,5.0,,1,weight,"artifacts/s2p2e_g50/metrics/method_appendix.json -> training_protocol.layer1.lambda_pose"
+protocol,layer1,S2P2E Layer I,training_config,lambda_gripper,1.0,,1,weight,"artifacts/s2p2e_g50/metrics/method_appendix.json -> training_protocol.layer1.lambda_gripper"
+protocol,layer1,S2P2E Layer I,training_config,lambda_retrieval,0.2,,1,weight,"artifacts/s2p2e_g50/metrics/method_appendix.json -> training_protocol.layer1.lambda_retrieval"
+protocol,layer2,S2P2E Layer II,training_config,ppe_hidden_dim,512,,1,dim,"artifacts/s2p2e_g50/metrics/method_appendix.json -> training_protocol.layer2.ppe_hidden_dim"
+protocol,layer2,S2P2E Layer II,training_config,ppe_layers,4,,1,count,"artifacts/s2p2e_g50/metrics/method_appendix.json -> training_protocol.layer2.ppe_layers"
+protocol,layer2,S2P2E Layer II,training_config,lambda_physics,0.1,,1,weight,"artifacts/s2p2e_g50/metrics/method_appendix.json -> training_protocol.layer2.lambda_physics"
+protocol,layer2,S2P2E Layer II,training_config,trajectory_length,24,,1,steps,"artifacts/s2p2e_g50/metrics/method_appendix.json -> training_protocol.layer2.trajectory_length"
+protocol,layer3,S2P2E Layer III,training_config,history_length,8,,1,steps,"artifacts/s2p2e_g50/metrics/method_appendix.json -> training_protocol.layer3.history_length"
+protocol,layer3,S2P2E Layer III,training_config,clip_ratio,0.2,,1,ratio,"artifacts/s2p2e_g50/metrics/method_appendix.json -> training_protocol.layer3.clip_ratio"
+protocol,layer3,S2P2E Layer III,training_config,lambda_gate,0.5,,1,weight,"artifacts/s2p2e_g50/metrics/method_appendix.json -> training_protocol.layer3.lambda_gate"
+protocol,policy_bridge,DROID policy bridge,training_data,num_samples,1134,,1134,transitions,"artifacts/actor_critic_droid/actor_critic_droid_history.json -> num_samples"
+

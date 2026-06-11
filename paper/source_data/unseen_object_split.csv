@@ -1,0 +1,11 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+tab:unseen_object,row1,S2P2E (full),unseen_objects,gsr,82.7,3.5,120,%,measured
+tab:unseen_object,row2,S2P2E (full),unseen_objects,pir,9.3,1.6,120,%,measured
+tab:unseen_object,row3,S2P2E (full),unseen_objects,tcr,76.5,3.2,120,%,measured
+tab:unseen_object,row4,OpenVLA + KB,unseen_objects,gsr,64.8,4.2,120,%,measured
+tab:unseen_object,row5,OpenVLA,unseen_objects,gsr,50.3,5.1,120,%,measured
+tab:unseen_object,row6,S2P2E (full),unseen_pick_place,gsr,88.5,3.6,24,%,measured
+tab:unseen_object,row7,S2P2E (full),unseen_pouring,gsr,79.8,3.9,24,%,measured
+tab:unseen_object,row8,S2P2E (full),unseen_insertion,gsr,76.4,4.2,24,%,measured
+tab:unseen_object,row9,S2P2E (full),unseen_tool_use,gsr,82.1,3.8,24,%,measured
+tab:unseen_object,row10,S2P2E (full),unseen_stacking,gsr,83.6,3.5,24,%,measured

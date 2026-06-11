@@ -1,0 +1,28 @@
+{
+  "ablations": {
+    "full": {
+      "loss": 0.01377445464539859,
+      "joint_pose_loss": 0.0010576993744406435,
+      "joint_tau_loss": 0.010063526479320394,
+      "joint_feasibility_loss": 0.0010756598526818885
+    },
+    "w_o_rag": {
+      "loss": 0.8238316608799828,
+      "joint_pose_loss": 0.2710859841770596,
+      "joint_tau_loss": 0.010035777774949869,
+      "joint_feasibility_loss": 0.0010759058705944982
+    },
+    "w_o_ppe": {
+      "loss": 0.35862048467000324,
+      "joint_pose_loss": 0.0010576993744406435,
+      "joint_tau_loss": 0.008873797953128815,
+      "joint_feasibility_loss": 0.6931471824645996
+    },
+    "w_o_residual": {
+      "loss": 0.01377445464539859,
+      "joint_pose_loss": 0.0010576993744406435,
+      "joint_tau_loss": 0.010063526479320394,
+      "joint_feasibility_loss": 0.0010756598526818885
+    }
+  }
+}

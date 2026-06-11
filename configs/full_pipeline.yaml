@@ -1,0 +1,22 @@
+seed: 42
+run_name: s2p2e_full_pipeline
+artifacts_dir: artifacts
+
+stages:
+  build_kb: true
+  synthesize_assets: true
+  train_s2p2e: true
+  convert_droid_subset: true
+  train_actor_critic_droid: true
+
+s2p2e_config: configs/experiment_g50.yaml
+
+policy:
+  batch_size: 16
+  actor_lr: 0.0003
+  critic_lr: 0.0003
+  epochs: 2
+  gamma: 0.99
+  tau: 0.005
+  torque_limit: 12.0
+  lambda_viol: 0.5

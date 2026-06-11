@@ -1,0 +1,17 @@
+ablations:
+  full:
+    disable_rag: false
+    disable_ppe: false
+    disable_residual: false
+  w_o_rag:
+    disable_rag: true
+    disable_ppe: false
+    disable_residual: false
+  w_o_ppe:
+    disable_rag: false
+    disable_ppe: true
+    disable_residual: false
+  w_o_residual:
+    disable_rag: false
+    disable_ppe: false
+    disable_residual: true

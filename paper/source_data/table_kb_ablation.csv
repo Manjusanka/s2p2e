@@ -1,0 +1,6 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+tab:kb_ablation,row1,Full 3-tier,all_tiers,gsr,87.3,3.1,500,%,measured
+tab:kb_ablation,row2,Semantic only,semantic,gsr,66.4,5.5,500,%,measured
+tab:kb_ablation,row3,Semantic + geometric,semantic_geometric,gsr,79.8,3.9,500,%,measured
+tab:kb_ablation,row4,Semantic + operational,semantic_operational,gsr,82.1,3.6,500,%,measured
+tab:kb_ablation,row5,Uniform retrieval,uniform,gsr,81.5,4.2,500,%,measured

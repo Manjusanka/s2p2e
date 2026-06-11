@@ -1,0 +1,22 @@
+datasets:
+  droid:
+    enabled: true
+    root: public_data/droid_100
+    format: rlds
+    sample_only: true
+  rh20t:
+    enabled: true
+    root: public_data/rh20t
+    format: scene_folder
+    resized_version: true
+  roboset:
+    enabled: true
+    root: public_data/roboset
+    format: tfds_export
+
+training:
+  actor_batch_size: 16
+  actor_lr: 0.0003
+  actor_epochs: 2
+  gamma: 0.99
+  tau: 0.005

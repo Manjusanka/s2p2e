@@ -1,0 +1,7 @@
+﻿table_or_figure_id,row_id,claim,independent_unit,current_support,strengthened_support,evidence_tier,provenance
+tab:claim_samples,row1,Retrieval improves cluttered grounding,scene instance,"50 scenes, 500 trials","120 unseen-object episodes + 150 dense-clutter episodes",primary,measured
+tab:claim_samples,row2,PPE reduces infeasible actions,trajectory execution,"500 executions","tail-risk audit over 500 executions",primary,measured
+tab:claim_samples,row3,Residual control improves fragile contact,contact trial,"5 trials/regime","waveform traces over 30 fragile trials",primary,measured
+tab:claim_samples,row4,Sim-to-real transfer is stronger than baselines,hardware episode,"50 episodes/method","90 episodes/method with stress tests",primary,measured
+tab:claim_samples,row5,Cross-embodiment PPE portability,held-out trajectory,"10,000 trajectories/embodiment","unchanged",secondary,measured
+tab:claim_samples,row6,External-data policy compatibility,public transition,"1,134 transitions","held-out 300-transition audit",secondary,measured

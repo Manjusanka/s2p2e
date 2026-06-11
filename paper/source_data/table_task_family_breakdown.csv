@@ -1,0 +1,16 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+tab:per_task,row1,S2P2E (full),pick-place,gsr,92.1,2.8,50,%,measured
+tab:per_task,row2,S2P2E (full),pouring,gsr,85.7,3.4,50,%,measured
+tab:per_task,row3,S2P2E (full),insertion,gsr,82.3,3.9,50,%,measured
+tab:per_task,row4,S2P2E (full),tool_use,gsr,88.4,3.1,50,%,measured
+tab:per_task,row5,S2P2E (full),stacking,gsr,88.0,3.5,50,%,measured
+tab:per_task,row6,OpenVLA,pick-place,gsr,64.3,4.5,50,%,measured
+tab:per_task,row7,OpenVLA,pouring,gsr,52.1,5.2,50,%,measured
+tab:per_task,row8,OpenVLA,insertion,gsr,48.7,5.8,50,%,measured
+tab:per_task,row9,OpenVLA,tool_use,gsr,55.6,4.9,50,%,measured
+tab:per_task,row10,OpenVLA,stacking,gsr,69.8,4.1,50,%,measured
+tab:per_task,row11,OpenVLA + KB,pick-place,gsr,78.2,3.2,50,%,measured
+tab:per_task,row12,OpenVLA + KB,pouring,gsr,68.5,3.8,50,%,measured
+tab:per_task,row13,OpenVLA + KB,insertion,gsr,63.1,4.1,50,%,measured
+tab:per_task,row14,OpenVLA + KB,tool_use,gsr,71.3,3.6,50,%,measured
+tab:per_task,row15,OpenVLA + KB,stacking,gsr,75.4,3.3,50,%,measured

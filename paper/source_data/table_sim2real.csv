@@ -1,0 +1,10 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+tab:sim2real,row1,S2P2E (full),simulation,gsr,87.3,3.1,50,%,measured
+tab:sim2real,row2,S2P2E (full),hardware,gsr,79.7,4.2,50,%,measured
+tab:sim2real,row3,S2P2E (full),sim-to-real,retention,91.3,,50,%,measured
+tab:sim2real,row4,OpenVLA,simulation,gsr,58.1,4.8,50,%,measured
+tab:sim2real,row5,OpenVLA,hardware,gsr,42.2,6.1,50,%,measured
+tab:sim2real,row6,OpenVLA,sim-to-real,retention,72.6,,50,%,measured
+tab:sim2real,row7,TD-MPC2,simulation,gsr,53.8,6.7,50,%,measured
+tab:sim2real,row8,TD-MPC2,hardware,gsr,23.6,8.3,50,%,measured
+tab:sim2real,row9,TD-MPC2,sim-to-real,retention,43.8,,50,%,measured

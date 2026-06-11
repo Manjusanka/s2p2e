@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "S2P2E Reproduction"
+message: "If you use this repository, please cite the paper and this codebase."
+type: software
+authors:
+  - family-names: "Open Source"
+    given-names: "Reproduction Team"
+repository-code: "https://example.com/s2p2e-reproduction"
+license: "MIT"
+version: "0.1.0"
+date-released: 2026-06-06
+keywords:
+  - robotics
+  - manipulation
+  - retrieval-augmented generation
+  - inverse dynamics
+  - residual control

@@ -1,0 +1,16 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+tab:hyperparam,row1,S2P2E (full),lambda_physics_0.01,gsr,83.8,,500,%,measured
+tab:hyperparam,row2,S2P2E (full),lambda_physics_0.1,gsr,87.3,,500,%,measured
+tab:hyperparam,row3,S2P2E (full),lambda_physics_1.0,gsr,85.1,,500,%,measured
+tab:hyperparam,row4,S2P2E (full),lambda_viol_0.1,gsr,85.2,,500,%,measured
+tab:hyperparam,row5,S2P2E (full),lambda_viol_0.5,gsr,87.3,,500,%,measured
+tab:hyperparam,row6,S2P2E (full),lambda_viol_2.0,gsr,84.6,,500,%,measured
+tab:hyperparam,row7,S2P2E (full),retrieval_k_3,gsr,85.7,,500,%,measured
+tab:hyperparam,row8,S2P2E (full),retrieval_k_5,gsr,87.3,,500,%,measured
+tab:hyperparam,row9,S2P2E (full),retrieval_k_10,gsr,86.1,,500,%,measured
+tab:hyperparam,row10,S2P2E (full),safety_bound_10pct,gsr,86.4,,500,%,measured
+tab:hyperparam,row11,S2P2E (full),safety_bound_20pct,gsr,87.3,,500,%,measured
+tab:hyperparam,row12,S2P2E (full),safety_bound_40pct,gsr,85.9,,500,%,measured
+tab:hyperparam,row13,S2P2E (full),embedding_dim_256,gsr,85.5,,500,%,measured
+tab:hyperparam,row14,S2P2E (full),embedding_dim_512,gsr,87.3,,500,%,measured
+tab:hyperparam,row15,S2P2E (full),embedding_dim_768,gsr,87.1,,500,%,measured

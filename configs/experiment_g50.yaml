@@ -1,0 +1,63 @@
+seed: 42
+run_name: s2p2e_g50
+artifacts_dir: artifacts
+
+data:
+  shapenet_roots:
+    - shapenet/models
+    - shapenet/modelnet40_normal_resampled
+  objaverse_root: objaverse/models
+  cache_root: artifacts/cache_g50
+  num_points: 1024
+  shapenet_limit_per_category: 0
+  objaverse_limit: 3500
+  train_ratio: 0.8
+  val_ratio: 0.1
+  tasks: [pick, place, insert, pour, tool_use]
+
+model:
+  embedding_dim: 512
+  retrieval_topk: 5
+  task_weights:
+    pick: [0.3, 0.5, 0.2]
+    place: [0.3, 0.4, 0.3]
+    insert: [0.2, 0.5, 0.3]
+    pour: [0.2, 0.4, 0.4]
+    tool_use: [0.3, 0.3, 0.4]
+  ppe_hidden_dim: 512
+  ppe_layers: 4
+  residual_history: 8
+  control_clip_ratio: 0.2
+
+training:
+  device: cpu
+  batch_size: 12
+  num_workers: 0
+  lr_layer1: 0.001
+  lr_layer2: 0.001
+  lr_layer3: 0.001
+  lr_joint: 0.0005
+  weight_decay: 0.0001
+  epochs_layer1: 4
+  epochs_layer2: 4
+  epochs_layer3: 4
+  epochs_joint: 4
+  lambda_pose: 5.0
+  lambda_gripper: 1.0
+  lambda_retrieval: 0.2
+  lambda_physics: 0.1
+  lambda_viol: 0.5
+  lambda_gate: 0.5
+  lambda_joint_pose: 3.0
+  lambda_joint_tau: 1.0
+  lambda_joint_feasibility: 0.5
+
+physics:
+  dof: 7
+  torque_limit: 12.0
+  trajectory_length: 24
+  num_trajectories: 256
+  history_length: 8
+
+evaluation:
+  batch_size: 12

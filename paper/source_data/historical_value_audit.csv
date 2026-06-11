@@ -1,0 +1,16 @@
+record_id,location_type,location_id,final_value,source_artifact,unit,status,notes
+val_001,table,tab:dataset_accounting,"120 episodes",unseen_object_split_metrics,episodes,completed,Measured: 120 episodes across 20 held-out objects
+val_002,table,tab:dataset_accounting,"150 episodes",dense_clutter_metrics,episodes,completed,Measured: 150 episodes with >=10 objects
+val_003,table,tab:dataset_accounting,"90 episodes/method",sim2real_stress_test_metrics,episodes,completed,Measured: 90 hardware episodes/method (30 per condition x 3 conditions)
+val_004,table,tab:ood_robustness,"82.7 +/- 3.5",unseen_object_split_metrics,%,completed,S2P2E unseen-object GSR measured at 82.7 +/- 3.5%
+val_005,table,tab:ood_robustness,"10.4 +/- 1.8",dense_clutter_metrics,%,completed,S2P2E dense-clutter PIR measured at 10.4 +/- 1.8%
+val_006,table,tab:ood_robustness,"75.9 +/- 4.5",sim2real_stress_test_metrics,%,completed,S2P2E camera-shift real GSR measured at 75.9 +/- 4.5%
+val_007,table,tab:ood_robustness,"73.6 +/- 4.8",sim2real_stress_test_metrics,%,completed,S2P2E illumination-shift real GSR measured at 73.6 +/- 4.8%
+val_008,table,tab:ood_robustness,"77.2 +/- 4.2",sim2real_stress_test_metrics,%,completed,S2P2E added-payload real GSR measured at 77.2 +/- 4.2%
+val_009,table,tab:safety_tail,"0.21 +/- 0.04",safety_tail_metrics,N*m,completed,95th percentile torque excess measured at 0.21 +/- 0.04 N*m
+val_010,table,tab:safety_tail,"14.2 +/- 3.6",safety_tail_metrics,ms,completed,Violation duration per episode measured at 14.2 +/- 3.6 ms
+val_011,table,tab:safety_tail,"91 +/- 13",force_waveform_metrics,ms,completed,Fragile-object settling time measured at 91 +/- 13 ms
+val_012,table,tab:safety_tail,"0.63 +/- 0.10",force_waveform_metrics,N,completed,Fragile-object force overshoot measured at 0.63 +/- 0.10 N
+val_013,table,tab:safety_tail,"4.1 +/- 0.9",force_waveform_metrics,%,completed,Contact-loss frequency measured at 4.1 +/- 0.9%
+val_014,table,tab:claim_samples,"held-out 300-transition audit",external_policy_bridge_audit,transitions,completed,Held-out 300-transition audit completed
+val_015,table,tab:stress_protocol,"+/-4 cm and +/-8 deg",sim2real_stress_test_protocol,geometry,completed,Camera perturbation protocol confirmed

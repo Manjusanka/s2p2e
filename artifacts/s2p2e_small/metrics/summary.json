@@ -1,0 +1,124 @@
+{
+  "layer1": {
+    "epoch": 1,
+    "train": {
+      "loss": 0.7098722961586965,
+      "pose_loss": 0.05617401880395769,
+      "gripper_loss": 0.015153077600112277,
+      "retrieval_loss": 2.069245588191798
+    },
+    "val": {
+      "loss": 0.43772436843978035,
+      "pose_mae": 0.07459575993319352,
+      "pose_loss": 0.005712413953410255,
+      "gripper_loss": 0.0011017369720826133,
+      "retrieval_loss": 2.0403027733167014
+    }
+  },
+  "layer2": {
+    "epoch": 2,
+    "train": {
+      "loss": 0.00798569741891697,
+      "mse": 0.007930270046927035,
+      "consistency": 0.0005542730541492347
+    },
+    "val": {
+      "loss": 0.007009164430201054,
+      "rmse": 0.08360901847481728,
+      "mse": 0.006990881869569421,
+      "consistency": 0.00018282693781657144
+    }
+  },
+  "layer3": {
+    "epoch": 2,
+    "train": {
+      "loss": 0.05288735800422728,
+      "residual_loss": 0.0052556370792444795,
+      "gate_loss": 0.0952634415589273
+    },
+    "val": {
+      "loss": 0.04845714569091797,
+      "command_norm": 2.795135498046875,
+      "residual_loss": 0.003427851013839245,
+      "gate_loss": 0.0900585912168026
+    }
+  },
+  "joint": {
+    "epoch": 1,
+    "train": {
+      "loss": 0.2553631638858835,
+      "joint_pose_loss": 0.07851936935584887,
+      "joint_tau_loss": 0.01029449280574393,
+      "joint_feasibility_loss": 0.019021125598671244
+    },
+    "val": {
+      "loss": 0.01377445464539859,
+      "joint_pose_loss": 0.0010576993744406435,
+      "joint_tau_loss": 0.010063526479320394,
+      "joint_feasibility_loss": 0.0010756598526818885
+    }
+  },
+  "ablations": {
+    "full": {
+      "loss": 0.01377445464539859,
+      "joint_pose_loss": 0.0010576993744406435,
+      "joint_tau_loss": 0.010063526479320394,
+      "joint_feasibility_loss": 0.0010756598526818885
+    },
+    "w_o_rag": {
+      "loss": 0.8238316608799828,
+      "joint_pose_loss": 0.2710859841770596,
+      "joint_tau_loss": 0.010035777774949869,
+      "joint_feasibility_loss": 0.0010759058705944982
+    },
+    "w_o_ppe": {
+      "loss": 0.35862048467000324,
+      "joint_pose_loss": 0.0010576993744406435,
+      "joint_tau_loss": 0.008873797953128815,
+      "joint_feasibility_loss": 0.6931471824645996
+    },
+    "w_o_residual": {
+      "loss": 0.01377445464539859,
+      "joint_pose_loss": 0.0010576993744406435,
+      "joint_tau_loss": 0.010063526479320394,
+      "joint_feasibility_loss": 0.0010756598526818885
+    }
+  },
+  "kb_tiers": {
+    "full_3tier": {
+      "loss": 0.7205902636051178
+    },
+    "semantic_only": {
+      "loss": 2.479377720091078
+    },
+    "semantic_geometric": {
+      "loss": 2.482305930720435
+    },
+    "semantic_operational": {
+      "loss": 0.7357472545570798
+    }
+  },
+  "task_families": {
+    "pick": {
+      "mean_loss": 0.0009835438242069877,
+      "count": 28
+    },
+    "place": {
+      "mean_loss": 0.0012031838674114884,
+      "count": 28
+    },
+    "insert": {
+      "mean_loss": 0.001014070152970297,
+      "count": 28
+    },
+    "pour": {
+      "mean_loss": 0.0010618452184384555,
+      "count": 28
+    },
+    "tool_use": {
+      "mean_loss": 0.0011144238700840756,
+      "count": 28
+    }
+  },
+  "num_records": 283
+}

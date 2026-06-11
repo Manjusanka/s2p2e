@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Large raw data and generated caches
+external/
+shapenet/modelnet40_normal_resampled/
+artifacts/cache/
+artifacts/cache_g50/
+**/.cache/
+*.faiss
+*.npy
+*.npz
+*.part
+*.tar.gz
+
+# Keep release-scale checkpoints and public-data samples.
+!artifacts/**/*.pt
+!public_data/droid_subset_jsonl/*.jsonl

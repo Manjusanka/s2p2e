@@ -1,0 +1,17 @@
+{
+  "history": [
+    {
+      "epoch": 1,
+      "critic_loss": 5.147725926075458e-05,
+      "actor_loss": -0.04025529566365228,
+      "contrastive_loss": 0.6850536784655611
+    },
+    {
+      "epoch": 2,
+      "critic_loss": 1.798162226067125e-07,
+      "actor_loss": -0.03921370077091203,
+      "contrastive_loss": 0.6850655028517817
+    }
+  ],
+  "num_samples": 1134
+}

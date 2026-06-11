@@ -1,0 +1,17 @@
+﻿table_or_figure_id,row_id,method,condition,metric,mean,sd,n,unit,provenance
+tab:stress_test,row1,S2P2E (full),camera_shift,gsr,75.9,4.5,30,%,measured
+tab:stress_test,row2,S2P2E (full),camera_shift,pir,10.8,1.9,30,%,measured
+tab:stress_test,row3,S2P2E (full),camera_shift,retention,87.0,,30,%,measured
+tab:stress_test,row4,S2P2E (full),illumination_shift,gsr,73.6,4.8,30,%,measured
+tab:stress_test,row5,S2P2E (full),illumination_shift,detection_failure,3.3,1.2,30,%,measured
+tab:stress_test,row6,S2P2E (full),illumination_shift,retention,84.3,,30,%,measured
+tab:stress_test,row7,S2P2E (full),added_payload_150g,gsr,78.4,3.8,15,%,measured
+tab:stress_test,row8,S2P2E (full),added_payload_300g,gsr,76.0,4.6,15,%,measured
+tab:stress_test,row9,S2P2E (full),added_payload_combined,gsr,77.2,4.2,30,%,measured
+tab:stress_test,row10,S2P2E (full),added_payload_combined,retention,88.4,,30,%,measured
+tab:stress_test,row11,OpenVLA + KB,camera_shift,gsr,59.4,5.2,30,%,measured
+tab:stress_test,row12,OpenVLA + KB,illumination_shift,gsr,57.8,5.5,30,%,measured
+tab:stress_test,row13,OpenVLA + KB,added_payload_combined,gsr,61.3,4.7,30,%,measured
+tab:stress_test,row14,OpenVLA,camera_shift,gsr,38.2,6.3,30,%,measured
+tab:stress_test,row15,OpenVLA,illumination_shift,gsr,36.4,6.1,30,%,measured
+tab:stress_test,row16,OpenVLA,added_payload_combined,gsr,41.0,5.8,30,%,measured
