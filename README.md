@@ -102,7 +102,7 @@ The committed DROID files are a local `droid_100` subset for interface testing a
 
 Objaverse meshes require Git LFS after cloning. For full-scale training beyond the included subset, use the manifests and reconstruction scripts described in [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md) and [docs/DATA_RELEASE.md](docs/DATA_RELEASE.md).
 
-The generated S2P2E-RAG dataset is the main project-native open data asset. It contains 7,405 enriched retrieval entries derived from 1,492 local 3D objects across five tabletop manipulation task families. The v2 schema keeps the raw semantic/geometric/operational supervision vectors and adds interpretable object priors, task phase sequences, geometry summaries, physics proxies, quality flags, and provenance fields for dataset-level auditing.
+The generated S2P2E-RAG dataset is the main project-native open data asset. It contains 68,960 enriched retrieval entries derived from 13,803 local 3D objects across five tabletop manipulation task families. The v2 schema keeps the raw semantic/geometric/operational supervision vectors and adds interpretable object priors, task phase sequences, geometry summaries, physics proxies, quality flags, and provenance fields for dataset-level auditing.
 
 ## Documentation
 

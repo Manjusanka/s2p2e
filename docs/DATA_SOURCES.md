@@ -12,7 +12,7 @@
 
 - Current local location: `shapenet/models/`
 - Used for: point-cloud encoder training and KB construction
-- Current repository status: local subset included directly, excluding caches and partial downloads
+- Current repository status: the small local subset under `shapenet/models/` is included directly. Expanded ModelNet40 point-cloud inputs can be reconstructed with `scripts/download_modelnet40.py`; the full upstream extraction is kept local/ignored, while the derived S2P2E-RAG release is tracked.
 
 ## Public Robot Data
 
@@ -30,7 +30,7 @@
 
 - Current local location: `public_data/s2p2e_rag_dataset/`
 - Generated from: local 3D object subset, S2P2E task vocabulary, and semantic/geometric/operational tier construction
-- Current size: 7,405 retrieval entries from 1,492 objects across five task families
+- Current size: 68,960 retrieval entries from 13,803 objects across five task families
 - Entry schema: raw model vectors plus object priors, task phase labels, geometry summaries, operational summaries, physics proxies, quality flags, and provenance
 - Intended usage: Layer I RAG training, KB-tier ablations, open retrieval dataset release, and manuscript source-data support
 

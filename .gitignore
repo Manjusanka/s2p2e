@@ -18,6 +18,12 @@ Thumbs.db
 # Large raw data and generated caches
 external/
 shapenet/modelnet40_normal_resampled/
+shapenet/*/
+!shapenet/models/
+!shapenet/models/**
+shapenet/*.txt
+shapenet/filelist.txt
+shapenet/metadata.json
 artifacts/cache/
 artifacts/cache_g50/
 **/.cache/

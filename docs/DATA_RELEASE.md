@@ -30,6 +30,6 @@ The included local subset is sufficient for smoke tests and review-scale reprodu
 
 ## Generated RAG Dataset
 
-`public_data/s2p2e_rag_dataset/` is generated from the local 3D object subset and the S2P2E task vocabulary. It is project-native data rather than a mirrored upstream dataset, so it can be cited as the open S2P2E-RAG release in the manuscript. The current release contains 7,405 retrieval entries, deterministic train/val/test splits, category counts, task counts, a dataset card, and `SCHEMA.md`.
+`public_data/s2p2e_rag_dataset/` is generated from the local 3D object subset and the S2P2E task vocabulary. It is project-native data rather than a mirrored upstream dataset, so it can be cited as the open S2P2E-RAG release in the manuscript. The current release contains 68,960 retrieval entries, deterministic train/val/test splits, category counts, task counts, a dataset card, and `SCHEMA.md`.
 
 Each entry keeps the raw training fields used by Layer I and adds a v2 interpretability layer: object/category priors, task-family and phase-sequence labels, geometry summaries, operational summaries, physics proxies, quality flags, and provenance. These fields make the data release inspectable without changing the model-facing vectors.

@@ -1,27 +1,27 @@
 {
-  "records": 1492,
-  "kb_entries": 7405,
-  "train_samples": 5965,
-  "val_samples": 745,
-  "vocab_size": 77,
+  "records": 13803,
+  "kb_entries": 68960,
+  "train_samples": 55210,
+  "val_samples": 6900,
+  "vocab_size": 78,
   "resume": {
-    "loaded": 47,
-    "skipped": 0
+    "loaded": 46,
+    "skipped": 1
   },
   "best": {
-    "epoch": 21,
+    "epoch": 7,
     "train": {
-      "loss": 0.39663110845210403,
-      "pose_loss": 0.00019429664281786773,
-      "gripper_loss": 2.7713497063190237e-08,
-      "retrieval_loss": 1.978297956507583
+      "loss": 0.3948500859792666,
+      "pose_loss": 0.00012083826585961068,
+      "gripper_loss": 1.0644341206303088e-10,
+      "retrieval_loss": 1.9712294433400859
     },
     "val": {
-      "loss": 0.44739907472691637,
-      "pose_mae": 0.009293884355971154,
-      "pose_loss": 0.00022305285033616336,
-      "gripper_loss": 1.5275711386127484e-08,
-      "retrieval_loss": 2.2314189647106413
+      "loss": 0.48562852831350434,
+      "pose_mae": 0.007492079381740445,
+      "pose_loss": 0.00018664282277280076,
+      "gripper_loss": 1.9640707734785538e-10,
+      "retrieval_loss": 2.4234765296181044
     }
   }
 }

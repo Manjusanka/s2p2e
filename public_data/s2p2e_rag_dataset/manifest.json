@@ -1,9 +1,9 @@
 {
   "name": "S2P2E-RAG",
   "version": "2026-06-11",
-  "num_entries": 7405,
-  "num_objects": 1492,
-  "num_categories": 40,
+  "num_entries": 68960,
+  "num_objects": 13803,
+  "num_categories": 41,
   "tasks": [
     "insert",
     "pick",
@@ -13,12 +13,12 @@
   ],
   "datasets": {
     "objaverse": 4905,
-    "shapenet": 2500
+    "shapenet": 64055
   },
   "splits": {
-    "train": 5924,
-    "val": 740,
-    "test": 741
+    "train": 55168,
+    "val": 6896,
+    "test": 6896
   },
   "fields": [
     "entry_id",

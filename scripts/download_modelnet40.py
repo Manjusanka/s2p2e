@@ -33,6 +33,16 @@ def download_file(url: str, path: Path) -> None:
     tmp.replace(path)
 
 
+def safe_extract_tar(archive: Path, out_dir: Path) -> None:
+    out_root = out_dir.resolve()
+    with tarfile.open(archive, "r:gz") as tar:
+        for member in tar.getmembers():
+            target = (out_dir / member.name).resolve()
+            if not str(target).startswith(str(out_root)):
+                raise ValueError(f"Unsafe tar member path: {member.name}")
+        tar.extractall(out_dir)
+
+
 def main() -> None:
     out_dir = ensure_dir(ROOT / "shapenet")
     archive = out_dir / "modelnet40_normal_resampled.tar.gz"
@@ -52,10 +62,10 @@ def main() -> None:
         except Exception:
             download_file(URL, archive)
     if not extract_dir.exists():
-        with tarfile.open(archive, "r:gz") as tar:
-            tar.extractall(out_dir)
-    txt_count = len(list(extract_dir.rglob("*.txt")))
-    print({"archive": str(archive), "extract_dir": str(extract_dir), "txt_count": txt_count})
+        safe_extract_tar(archive, out_dir)
+    txt_root = extract_dir if extract_dir.exists() else out_dir
+    txt_count = len(list(txt_root.rglob("*.txt")))
+    print({"archive": str(archive), "extract_root": str(txt_root), "txt_count": txt_count})
 
 
 if __name__ == "__main__":
