@@ -19,7 +19,7 @@ This dataset is intended for retrieval-augmented pose proposal, manipulation kno
 - RAG best epoch: 7
 - RAG validation pose MAE: 0.007492
 - Full-stack validation loss: 0.007597
-- DROID policy samples: 6235
+- DROID policy samples: 39003
 
 ## Files
 

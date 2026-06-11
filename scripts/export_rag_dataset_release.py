@@ -271,7 +271,10 @@ Each JSONL row represents one `(object, task)` retrieval entry.
         writer.writerow(["Layer II / PPE", "4096 synthetic inverse-dynamics trajectories", physics_summary["layer2"]["epoch"], "rmse", physics_summary["layer2"]["val"]["rmse"]])
         writer.writerow(["Layer III / residual control", "4096 residual-control trajectories", physics_summary["layer3"]["epoch"], "residual_loss", physics_summary["layer3"]["val"]["residual_loss"]])
         writer.writerow(["Joint S2P2E", f"{physics_summary['num_records']} 3D objects x 5 tasks", physics_summary["joint"]["epoch"], "joint_val_loss", physics_summary["joint"]["val"]["loss"]])
-        writer.writerow(["Actor-Critic DROID bridge", f"{policy_summary['num_samples']} DROID transitions", policy_summary["history"][-1]["epoch"], "critic_loss", policy_summary["history"][-1]["critic_loss"]])
+        policy_best = policy_summary.get("best", {"epoch": policy_summary["history"][-1]["epoch"], "critic_loss": policy_summary["history"][-1]["critic_loss"]})
+        policy_sources = policy_summary.get("source_counts", {"droid": policy_summary["num_samples"]})
+        policy_training_data = "; ".join(f"{name}: {count}" for name, count in sorted(policy_sources.items()))
+        writer.writerow(["Actor-Critic DROID bridge", policy_training_data, policy_best["epoch"], "best_val_critic_loss", policy_best["critic_loss"]])
 
     schema_csv = ROOT / "paper" / "source_data" / "rag_dataset_schema_summary.csv"
     with schema_csv.open("w", newline="", encoding="utf-8") as handle:

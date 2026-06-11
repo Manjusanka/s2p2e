@@ -20,9 +20,15 @@
 
 - Official page: [DROID Dataset](https://droid-dataset.github.io/droid/the-droid-dataset)
 - Current local location: `public_data/droid_100/1.0.0/`
-- Current usage: TFRecord subset converted to `jsonl` transitions for Actor-Critic training
+- Current usage: TFRecord subset converted to `jsonl` transitions for Actor-Critic training and mixed with project-generated cross-embodiment dynamics transitions
 - Current conversion output: `public_data/droid_subset_jsonl/`
 - Current repository status: local `droid_100` subset included; 31 shards are converted into 6,235 lightweight policy transitions
+
+### Cross-Embodiment Dynamics Augmentation
+
+- Current generator: `build_cross_embodiment_public_dataset` in `src/s2p2e/data/public_datasets.py`
+- Current usage: adds 32,768 synthetic 7-DoF transitions with randomized link lengths, masses, inertias, and payloads
+- Intended usage: policy-side validation of physics-feature injection and embodiment-conditioned generalization
 
 ## Project-Native Generated Data
 

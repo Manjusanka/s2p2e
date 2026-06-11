@@ -13,7 +13,7 @@ https://github.com/Manjusanka/s2p2e
 - Layer I: retrieval-augmented pose generation with semantic, geometric, and operational tiers.
 - Layer II: Physics Prior Encoder (PPE) with embodiment-conditioned inverse-dynamics modeling.
 - Layer III: hierarchical residual control with `FrictionNet`, `LoadNet`, `NoiseNet`, and `GateNet`.
-- Policy bridge: PPE feature injection into an actor-critic policy, including a DROID conversion sanity check.
+- Policy bridge: PPE feature injection into an actor-critic policy, including DROID conversion and cross-embodiment dynamics augmentation.
 - Experiment stack: staged training, joint training, ablations, task-family analysis, KB-tier analysis, and end-to-end pipeline execution.
 - Checkpoints: best checkpoints used by the review-scale reproduction under `artifacts/`.
 - Paper source data: machine-readable exports under `paper/source_data/`.
@@ -99,6 +99,8 @@ pytest tests -q
 ## Data Notes
 
 The committed DROID files are a local `droid_100` subset for interface testing and review-scale reproduction. They are not a substitute for the complete DROID dataset.
+
+The expanded policy-bridge run mixes 6,235 converted DROID transitions with 32,768 cross-embodiment synthetic dynamics transitions, producing 39,003 Actor-Critic training/evaluation samples with a held-out validation split.
 
 Objaverse meshes require Git LFS after cloning. For full-scale training beyond the included subset, use the manifests and reconstruction scripts described in [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md) and [docs/DATA_RELEASE.md](docs/DATA_RELEASE.md).
 

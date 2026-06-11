@@ -3,4 +3,4 @@ Layer I / S2P2E-RAG,13803 objects; 68960 KB entries,7,pose_mae,0.007492079381740
 Layer II / PPE,4096 synthetic inverse-dynamics trajectories,1,rmse,0.7117749098688364
 Layer III / residual control,4096 residual-control trajectories,16,residual_loss,0.00021257565151699964
 Joint S2P2E,13803 3D objects x 5 tasks,4,joint_val_loss,0.007596855071218063
-Actor-Critic DROID bridge,6235 DROID transitions,20,critic_loss,8.43684075066907e-09
+Actor-Critic DROID bridge,droid: 6235; synthetic_cross_embodiment: 32768,29,best_val_critic_loss,0.026929236306297424

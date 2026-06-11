@@ -2,124 +2,224 @@
   "history": [
     {
       "epoch": 1,
-      "critic_loss": 5.156093484546777e-06,
-      "actor_loss": -0.044304484768937794,
-      "contrastive_loss": 0.6851968033191486
+      "critic_loss": 0.02637013109190907,
+      "actor_loss": -5.6230994615272545,
+      "contrastive_loss": 0.6497460893315409,
+      "val_critic_loss": 0.03825344844457892
     },
     {
       "epoch": 2,
-      "critic_loss": 6.460413754388456e-09,
-      "actor_loss": -0.04373679321545821,
-      "contrastive_loss": 0.6851361552874248
+      "critic_loss": 0.1387978650611692,
+      "actor_loss": -20.5553400475216,
+      "contrastive_loss": 0.6496510070187457,
+      "val_critic_loss": 0.22894840559265653
     },
     {
       "epoch": 3,
-      "critic_loss": 5.272411850130109e-09,
-      "actor_loss": -0.04324191274742285,
-      "contrastive_loss": 0.6852215485695081
+      "critic_loss": 0.2936777664465641,
+      "actor_loss": -37.57972644346893,
+      "contrastive_loss": 0.649615900643652,
+      "val_critic_loss": 0.2836545960153224
     },
     {
       "epoch": 4,
-      "critic_loss": 1.0620657167116667e-08,
-      "actor_loss": -0.04276914059733733,
-      "contrastive_loss": 0.6851660959231548
+      "critic_loss": 0.3115024430059243,
+      "actor_loss": -49.73068599996506,
+      "contrastive_loss": 0.6497196789589815,
+      "val_critic_loss": 0.2852859200573847
     },
     {
       "epoch": 5,
-      "critic_loss": 1.1476633532972814e-08,
-      "actor_loss": -0.04230965580313634,
-      "contrastive_loss": 0.6851348545306768
+      "critic_loss": 0.4512372486040322,
+      "actor_loss": -63.69862064928387,
+      "contrastive_loss": 0.6497316879908823,
+      "val_critic_loss": 0.37976706977628294
     },
     {
       "epoch": 6,
-      "critic_loss": 2.3174296462155845e-08,
-      "actor_loss": -0.04187222314186585,
-      "contrastive_loss": 0.6851110701377575
+      "critic_loss": 0.5391970551008174,
+      "actor_loss": -79.64215242634498,
+      "contrastive_loss": 0.6498128425944579,
+      "val_critic_loss": 0.6214817204192037
     },
     {
       "epoch": 7,
-      "critic_loss": 5.160161321201192e-08,
-      "actor_loss": -0.04142822910768863,
-      "contrastive_loss": 0.6851460889363901
+      "critic_loss": 1.315817346993355,
+      "actor_loss": -100.26723506652776,
+      "contrastive_loss": 0.6496882728261087,
+      "val_critic_loss": 1.6779832679961548
     },
     {
       "epoch": 8,
-      "critic_loss": 5.554627041915749e-08,
-      "actor_loss": -0.040957030080831965,
-      "contrastive_loss": 0.6852341450177706
+      "critic_loss": 2.521375130057172,
+      "actor_loss": -129.3450866532304,
+      "contrastive_loss": 0.649518998378825,
+      "val_critic_loss": 4.876515442719225
     },
     {
       "epoch": 9,
-      "critic_loss": 3.4333485642557857e-08,
-      "actor_loss": -0.04038924922545751,
-      "contrastive_loss": 0.6850828172304692
+      "critic_loss": 7.358885211260512,
+      "actor_loss": -169.74507545881522,
+      "contrastive_loss": 0.6497350418252519,
+      "val_critic_loss": 11.777230016032203
     },
     {
       "epoch": 10,
-      "critic_loss": 8.125033188904468e-08,
-      "actor_loss": -0.03977797849056048,
-      "contrastive_loss": 0.6852104543111264
+      "critic_loss": 24.406925885782748,
+      "actor_loss": -218.6098130607779,
+      "contrastive_loss": 0.6496886900857892,
+      "val_critic_loss": 34.26414871606671
     },
     {
       "epoch": 11,
-      "critic_loss": 1.1030919776756376e-08,
-      "actor_loss": -0.039140054058188045,
-      "contrastive_loss": 0.6851829644961235
+      "critic_loss": 8.618891638685815,
+      "actor_loss": -246.61860706117224,
+      "contrastive_loss": 0.6497147336479959,
+      "val_critic_loss": 2.128468245267868
     },
     {
       "epoch": 12,
-      "critic_loss": 5.7723127235899434e-08,
-      "actor_loss": -0.03854972260693709,
-      "contrastive_loss": 0.6851648023495307
+      "critic_loss": 3.99189236651471,
+      "actor_loss": -262.9749072899901,
+      "contrastive_loss": 0.6497085439745904,
+      "val_critic_loss": 3.6307382024213917
     },
     {
       "epoch": 13,
-      "critic_loss": 2.4313856531540305e-08,
-      "actor_loss": -0.037911074742292744,
-      "contrastive_loss": 0.6851715543331244
+      "critic_loss": 4.0282705943885455,
+      "actor_loss": -274.1577356385446,
+      "contrastive_loss": 0.6496486052014986,
+      "val_critic_loss": 2.757013712505825
     },
     {
       "epoch": 14,
-      "critic_loss": 3.7877462859092484e-08,
-      "actor_loss": -0.037231026188685346,
-      "contrastive_loss": 0.6852181598162039
+      "critic_loss": 2.759125899445391,
+      "actor_loss": -269.30188587783357,
+      "contrastive_loss": 0.6496244990347512,
+      "val_critic_loss": 1.6307733021065838
     },
     {
       "epoch": 15,
-      "critic_loss": 1.831281969015659e-08,
-      "actor_loss": -0.036531700604619126,
-      "contrastive_loss": 0.6851442949894148
+      "critic_loss": 2.804873049653109,
+      "actor_loss": -261.7559733429929,
+      "contrastive_loss": 0.6498270937824858,
+      "val_critic_loss": 2.1726086838323564
     },
     {
       "epoch": 16,
-      "critic_loss": 3.420185710023275e-08,
-      "actor_loss": -0.03586002806058297,
-      "contrastive_loss": 0.6851271860110454
+      "critic_loss": 2.277756595479812,
+      "actor_loss": -247.58188250810315,
+      "contrastive_loss": 0.6496762607514912,
+      "val_critic_loss": 1.3598264413046055
     },
     {
       "epoch": 17,
-      "critic_loss": 1.3366121084507504e-08,
-      "actor_loss": -0.035184877518659986,
-      "contrastive_loss": 0.6852020242275336
+      "critic_loss": 1.183768759142869,
+      "actor_loss": -226.48503608668838,
+      "contrastive_loss": 0.6496131750215914,
+      "val_critic_loss": 1.0582089948116755
     },
     {
       "epoch": 18,
-      "critic_loss": 3.1065660852092056e-08,
-      "actor_loss": -0.03454757451246946,
-      "contrastive_loss": 0.6851531086823879
+      "critic_loss": 0.694755490889659,
+      "actor_loss": -211.33607717981747,
+      "contrastive_loss": 0.6497889023372664,
+      "val_critic_loss": 0.7820510715246201
     },
     {
       "epoch": 19,
-      "critic_loss": 2.7094271630160972e-08,
-      "actor_loss": -0.03388812952698805,
-      "contrastive_loss": 0.6851672129753309
+      "critic_loss": 0.467595283084684,
+      "actor_loss": -194.86817087818517,
+      "contrastive_loss": 0.649821031821676,
+      "val_critic_loss": 0.9181401684391693
     },
     {
       "epoch": 20,
-      "critic_loss": 8.43684075066907e-09,
-      "actor_loss": -0.03323781539996465,
-      "contrastive_loss": 0.6851678580809862
+      "critic_loss": 0.317376897353662,
+      "actor_loss": -179.3941903544646,
+      "contrastive_loss": 0.6494655944373028,
+      "val_critic_loss": 0.2582756260745838
+    },
+    {
+      "epoch": 21,
+      "critic_loss": 0.24780153958958895,
+      "actor_loss": -167.64183470761657,
+      "contrastive_loss": 0.6497125484884709,
+      "val_critic_loss": 0.06357646168240147
+    },
+    {
+      "epoch": 22,
+      "critic_loss": 0.1703109953776613,
+      "actor_loss": -157.08094099769835,
+      "contrastive_loss": 0.6497311030286165,
+      "val_critic_loss": 0.06649650429894567
+    },
+    {
+      "epoch": 23,
+      "critic_loss": 0.09683721990039303,
+      "actor_loss": -145.30592835460234,
+      "contrastive_loss": 0.6497093951745585,
+      "val_critic_loss": 0.23004609850220015
+    },
+    {
+      "epoch": 24,
+      "critic_loss": 0.09336235827160193,
+      "actor_loss": -136.26172227607387,
+      "contrastive_loss": 0.6495665911119856,
+      "val_critic_loss": 0.05247732557234217
+    },
+    {
+      "epoch": 25,
+      "critic_loss": 0.08958834190127068,
+      "actor_loss": -128.9658893699959,
+      "contrastive_loss": 0.6494225883277417,
+      "val_critic_loss": 0.20133086849675805
+    },
+    {
+      "epoch": 26,
+      "critic_loss": 0.08110674137558191,
+      "actor_loss": -121.59057712120259,
+      "contrastive_loss": 0.6498577135089537,
+      "val_critic_loss": 0.07514836294118499
+    },
+    {
+      "epoch": 27,
+      "critic_loss": 0.08725123262837692,
+      "actor_loss": -115.45652434384704,
+      "contrastive_loss": 0.6497770318033049,
+      "val_critic_loss": 0.10157282355806378
+    },
+    {
+      "epoch": 28,
+      "critic_loss": 0.07723956414665636,
+      "actor_loss": -110.7866392005218,
+      "contrastive_loss": 0.64960861184321,
+      "val_critic_loss": 0.03944637040897715
+    },
+    {
+      "epoch": 29,
+      "critic_loss": 0.0720072969420301,
+      "actor_loss": -106.15279050425387,
+      "contrastive_loss": 0.6496458509724685,
+      "val_critic_loss": 0.026929236306297424
+    },
+    {
+      "epoch": 30,
+      "critic_loss": 0.056194522761597164,
+      "actor_loss": -101.49493416548862,
+      "contrastive_loss": 0.6497454894816973,
+      "val_critic_loss": 0.028294468184047548
     }
   ],
-  "num_samples": 6235
+  "best": {
+    "epoch": 29,
+    "critic_loss": 0.026929236306297424
+  },
+  "num_samples": 39003,
+  "train_samples": 35103,
+  "val_samples": 3900,
+  "source_counts": {
+    "droid": 6235,
+    "synthetic_cross_embodiment": 32768
+  }
 }
