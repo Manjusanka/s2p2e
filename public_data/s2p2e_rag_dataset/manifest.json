@@ -1,0 +1,37 @@
+{
+  "name": "S2P2E-RAG",
+  "version": "2026-06-11",
+  "num_entries": 7405,
+  "num_objects": 1492,
+  "num_categories": 40,
+  "tasks": [
+    "insert",
+    "pick",
+    "place",
+    "pour",
+    "tool_use"
+  ],
+  "datasets": {
+    "objaverse": 4905,
+    "shapenet": 2500
+  },
+  "splits": {
+    "train": 5924,
+    "val": 740,
+    "test": 741
+  },
+  "fields": [
+    "object_id",
+    "dataset",
+    "category",
+    "task",
+    "semantic_text",
+    "geometric",
+    "operational"
+  ],
+  "source_artifacts": {
+    "kb_entries": "artifacts/s2p2e_rag_full/kb/kb_entries.json",
+    "rag_checkpoint": "artifacts/s2p2e_rag_full/checkpoints/layer1_best.pt",
+    "full_stack_checkpoint": "artifacts/s2p2e_physics_full/checkpoints/joint_best.pt"
+  }
+}

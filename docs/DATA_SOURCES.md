@@ -22,7 +22,16 @@
 - Current local location: `public_data/droid_100/1.0.0/`
 - Current usage: TFRecord subset converted to `jsonl` transitions for Actor-Critic training
 - Current conversion output: `public_data/droid_subset_jsonl/`
-- Current repository status: local subset included directly
+- Current repository status: local `droid_100` subset included; 31 shards are converted into 6,235 lightweight policy transitions
+
+## Project-Native Generated Data
+
+### S2P2E-RAG
+
+- Current local location: `public_data/s2p2e_rag_dataset/`
+- Generated from: local 3D object subset, S2P2E task vocabulary, and semantic/geometric/operational tier construction
+- Current size: 7,405 retrieval entries from 1,492 objects across five task families
+- Intended usage: Layer I RAG training, KB-tier ablations, open retrieval dataset release, and manuscript source-data support
 
 ### RH20T
 

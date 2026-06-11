@@ -1,5 +1,6 @@
 from pathlib import Path
 import sys
+import argparse
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
@@ -12,10 +13,19 @@ from s2p2e.utils.config import load_config
 
 
 def main() -> None:
-    cfg = load_config(ROOT / "configs" / "experiment_small.yaml")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", default="configs/experiment_small.yaml")
+    args = parser.parse_args()
+
+    cfg = load_config(ROOT / args.config)
     data_cfg = cfg["data"]
+    shapenet_roots = data_cfg.get("shapenet_roots", data_cfg.get("shapenet_root"))
+    if isinstance(shapenet_roots, list):
+        shapenet_roots = [ROOT / path for path in shapenet_roots]
+    else:
+        shapenet_roots = ROOT / shapenet_roots
     records = build_object_corpus(
-        ROOT / data_cfg["shapenet_root"],
+        shapenet_roots,
         ROOT / data_cfg["objaverse_root"],
         data_cfg["shapenet_limit_per_category"],
         data_cfg["objaverse_limit"],

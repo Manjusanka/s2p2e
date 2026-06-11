@@ -15,8 +15,13 @@ datasets:
     format: tfds_export
 
 training:
+  device: cuda
   actor_batch_size: 16
   actor_lr: 0.0003
-  actor_epochs: 2
+  critic_lr: 0.0003
+  actor_epochs: 20
   gamma: 0.99
   tau: 0.005
+  torque_limit: 12.0
+  lambda_viol: 0.5
+  synthetic_samples: 4096

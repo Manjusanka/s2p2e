@@ -18,6 +18,7 @@ https://github.com/Manjusanka/s2p2e
 - Checkpoints: best checkpoints used by the review-scale reproduction under `artifacts/`.
 - Paper source data: machine-readable exports under `paper/source_data/`.
 - Local data subset: ShapeNet/ModelNet-style point clouds, Objaverse meshes tracked with Git LFS, DROID TFRecord shards, and converted DROID JSONL transitions.
+- S2P2E-RAG dataset: the generated three-tier retrieval dataset under `public_data/s2p2e_rag_dataset/`.
 
 ## Data Boundary
 
@@ -33,7 +34,7 @@ s2p2e/
   configs/         experiment configurations
   docs/            data, model-card, and reproducibility notes
   paper/           source-data exports and manuscript audit notes
-  public_data/     DROID subset, converted JSONL transitions, and manifests
+  public_data/     DROID subset, S2P2E-RAG dataset, converted JSONL transitions, and manifests
   scripts/         download, convert, train, evaluate, and export utilities
   src/             S2P2E source code
   tests/           smoke and integration tests
@@ -65,6 +66,15 @@ Run the full pipeline:
 python scripts/run_full_pipeline.py
 ```
 
+Run the expanded GPU training suite after installing CUDA-enabled PyTorch:
+
+```bash
+python scripts/train_rag_layer1.py --config configs/experiment_rag_full.yaml
+python scripts/train_all.py --config configs/experiment_physics_full.yaml
+python scripts/train_actor_critic_droid.py --config configs/public_robot_data.yaml --out-dir artifacts/actor_critic_droid_full
+python scripts/export_rag_dataset_release.py
+```
+
 Run tests:
 
 ```bash
@@ -77,22 +87,29 @@ pytest tests -q
 - Layer checkpoints: `artifacts/s2p2e_g50/checkpoints/layer*_best.pt`
 - DROID policy bridge: `artifacts/actor_critic_droid/actor_critic_droid_best.pt`
 - Full-pipeline policy bridge: `artifacts/s2p2e_full_pipeline/policy_bridge_best.pt`
+- Expanded RAG model: `artifacts/s2p2e_rag_full/checkpoints/layer1_best.pt`
+- Expanded full-stack model: `artifacts/s2p2e_physics_full/checkpoints/joint_best.pt`
+- Expanded DROID policy bridge: `artifacts/actor_critic_droid_full/actor_critic_droid_best.pt`
 - Experiment summaries: `artifacts/*/metrics/*.json`
 - Paper source data: `paper/source_data/*.csv`
+- S2P2E-RAG open dataset: `public_data/s2p2e_rag_dataset/`
 - Local 3D data subset: `shapenet/` and `objaverse/`
 - DROID subset: `public_data/droid_100/` and `public_data/droid_subset_jsonl/`
 
 ## Data Notes
 
-The committed DROID files are a local subset for interface testing and review-scale reproduction. They are not a substitute for the complete DROID dataset.
+The committed DROID files are a local `droid_100` subset for interface testing and review-scale reproduction. They are not a substitute for the complete DROID dataset.
 
 Objaverse meshes require Git LFS after cloning. For full-scale training beyond the included subset, use the manifests and reconstruction scripts described in [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md) and [docs/DATA_RELEASE.md](docs/DATA_RELEASE.md).
+
+The generated S2P2E-RAG dataset is the main project-native open data asset. It contains 7,405 semantic/geometric/operational retrieval entries derived from 1,492 local 3D objects across five tabletop manipulation task families.
 
 ## Documentation
 
 - [Architecture](docs/architecture.md)
 - [Data sources](docs/DATA_SOURCES.md)
 - [Data release notes](docs/DATA_RELEASE.md)
+- [S2P2E-RAG dataset card](public_data/s2p2e_rag_dataset/DATASET_CARD.md)
 - [Model cards](docs/MODEL_CARDS.md)
 - [Open-source checklist](docs/OPEN_SOURCE_CHECKLIST.md)
 - [Reproducibility](docs/REPRODUCIBILITY.md)

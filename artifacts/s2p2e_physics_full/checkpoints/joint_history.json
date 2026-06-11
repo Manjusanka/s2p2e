@@ -1,0 +1,79 @@
+{
+  "history": [
+    {
+      "epoch": 1,
+      "train": {
+        "loss": 0.2370149589183643,
+        "joint_pose_loss": 0.067187949896507,
+        "joint_tau_loss": 0.010289872630721522,
+        "joint_feasibility_loss": 0.05032246131165922
+      },
+      "val": {
+        "loss": 0.00916819100050216,
+        "joint_pose_loss": 0.0003930422024766697,
+        "joint_tau_loss": 0.007838850424803317,
+        "joint_feasibility_loss": 0.0003004280993952713
+      }
+    },
+    {
+      "epoch": 2,
+      "train": {
+        "loss": 0.008715839745681584,
+        "joint_pose_loss": 0.00023306272690257448,
+        "joint_tau_loss": 0.007905123245979761,
+        "joint_feasibility_loss": 0.00022305663287746982
+      },
+      "val": {
+        "loss": 0.008389700481549222,
+        "joint_pose_loss": 0.00021345122173017366,
+        "joint_tau_loss": 0.0076672207029100424,
+        "joint_feasibility_loss": 0.0001642525956490414
+      }
+    },
+    {
+      "epoch": 3,
+      "train": {
+        "loss": 0.008417767345226163,
+        "joint_pose_loss": 0.00014371334396982467,
+        "joint_tau_loss": 0.007900241606346963,
+        "joint_feasibility_loss": 0.00017277144811499425
+      },
+      "val": {
+        "loss": 0.008682313821020913,
+        "joint_pose_loss": 0.00018886978734294546,
+        "joint_tau_loss": 0.008033755195743226,
+        "joint_feasibility_loss": 0.00016389876366295714
+      }
+    },
+    {
+      "epoch": 4,
+      "train": {
+        "loss": 0.008285232453829242,
+        "joint_pose_loss": 0.00012435226882377204,
+        "joint_tau_loss": 0.00783894233150912,
+        "joint_feasibility_loss": 0.00014646669874175629
+      },
+      "val": {
+        "loss": 0.00816420266563271,
+        "joint_pose_loss": 0.00014784950496718048,
+        "joint_tau_loss": 0.007659614591443158,
+        "joint_feasibility_loss": 0.00012207908560199902
+      }
+    }
+  ],
+  "best": {
+    "epoch": 4,
+    "train": {
+      "loss": 0.008285232453829242,
+      "joint_pose_loss": 0.00012435226882377204,
+      "joint_tau_loss": 0.00783894233150912,
+      "joint_feasibility_loss": 0.00014646669874175629
+    },
+    "val": {
+      "loss": 0.00816420266563271,
+      "joint_pose_loss": 0.00014784950496718048,
+      "joint_tau_loss": 0.007659614591443158,
+      "joint_feasibility_loss": 0.00012207908560199902
+    }
+  }
+}

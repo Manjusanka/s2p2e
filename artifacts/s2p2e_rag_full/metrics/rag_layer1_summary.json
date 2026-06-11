@@ -1,0 +1,27 @@
+{
+  "records": 1492,
+  "kb_entries": 7405,
+  "train_samples": 5965,
+  "val_samples": 745,
+  "vocab_size": 77,
+  "resume": {
+    "loaded": 47,
+    "skipped": 0
+  },
+  "best": {
+    "epoch": 21,
+    "train": {
+      "loss": 0.39663110845210403,
+      "pose_loss": 0.00019429664281786773,
+      "gripper_loss": 2.7713497063190237e-08,
+      "retrieval_loss": 1.978297956507583
+    },
+    "val": {
+      "loss": 0.44739907472691637,
+      "pose_mae": 0.009293884355971154,
+      "pose_loss": 0.00022305285033616336,
+      "gripper_loss": 1.5275711386127484e-08,
+      "retrieval_loss": 2.2314189647106413
+    }
+  }
+}

@@ -1,0 +1,32 @@
+seed: 42
+run_name: s2p2e_rag_full
+artifacts_dir: artifacts
+
+data:
+  shapenet_roots:
+    - shapenet/models
+    - shapenet/modelnet40_normal_resampled
+  objaverse_root: objaverse/models
+  cache_root: artifacts/cache_rag_full
+  num_points: 1024
+  shapenet_limit_per_category: 0
+  objaverse_limit: 0
+  train_ratio: 0.8
+  val_ratio: 0.1
+  tasks: [pick, place, insert, pour, tool_use]
+
+model:
+  embedding_dim: 512
+  retrieval_topk: 5
+
+training:
+  device: cuda
+  batch_size: 16
+  num_workers: 0
+  lr_layer1: 0.0005
+  weight_decay: 0.0001
+  epochs_layer1: 24
+  lambda_pose: 5.0
+  lambda_gripper: 1.0
+  lambda_retrieval: 0.2
+  resume_checkpoint: artifacts/s2p2e_g50/checkpoints/layer1_best.pt

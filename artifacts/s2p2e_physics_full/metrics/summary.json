@@ -1,0 +1,124 @@
+{
+  "layer1": {
+    "epoch": 4,
+    "train": {
+      "loss": 0.41187800191362806,
+      "pose_loss": 0.0008202807900705562,
+      "gripper_loss": 5.61879130192154e-05,
+      "retrieval_loss": 2.038602022638909
+    },
+    "val": {
+      "loss": 0.4161856472492218,
+      "pose_mae": 0.01656211983967335,
+      "pose_loss": 0.00034900041801131705,
+      "gripper_loss": 3.195459097735286e-05,
+      "retrieval_loss": 2.0720434315661165
+    }
+  },
+  "layer2": {
+    "epoch": 12,
+    "train": {
+      "loss": 0.023898220038972795,
+      "mse": 0.023814452208171133,
+      "consistency": 0.000837678447851431
+    },
+    "val": {
+      "loss": 0.027100741572212428,
+      "rmse": 0.16348000336438417,
+      "mse": 0.027020778274163604,
+      "consistency": 0.0007996345193532761
+    }
+  },
+  "layer3": {
+    "epoch": 15,
+    "train": {
+      "loss": 0.0002299557252882778,
+      "residual_loss": 0.0002294157839202171,
+      "gate_loss": 1.0798837757342028e-06
+    },
+    "val": {
+      "loss": 0.00020725604099425254,
+      "command_norm": 2.7862194627523422,
+      "residual_loss": 0.00020676053327406407,
+      "gate_loss": 9.910170639670923e-07
+    }
+  },
+  "joint": {
+    "epoch": 4,
+    "train": {
+      "loss": 0.008285232453829242,
+      "joint_pose_loss": 0.00012435226882377204,
+      "joint_tau_loss": 0.00783894233150912,
+      "joint_feasibility_loss": 0.00014646669874175629
+    },
+    "val": {
+      "loss": 0.00816420266563271,
+      "joint_pose_loss": 0.00014784950496718048,
+      "joint_tau_loss": 0.007659614591443158,
+      "joint_feasibility_loss": 0.00012207908560199902
+    }
+  },
+  "ablations": {
+    "full": {
+      "loss": 0.00816420266563271,
+      "joint_pose_loss": 0.00014784950496718048,
+      "joint_tau_loss": 0.007659614591443158,
+      "joint_feasibility_loss": 0.00012207908560199902
+    },
+    "w_o_rag": {
+      "loss": 0.8218996220446647,
+      "joint_pose_loss": 0.2713972748594081,
+      "joint_tau_loss": 0.007647715568383957,
+      "joint_feasibility_loss": 0.00012017018161714077
+    },
+    "w_o_ppe": {
+      "loss": 0.3563017166675405,
+      "joint_pose_loss": 0.00014784950496718048,
+      "joint_tau_loss": 0.0092845775900369,
+      "joint_feasibility_loss": 0.6931471824645996
+    },
+    "w_o_residual": {
+      "loss": 0.00816420266563271,
+      "joint_pose_loss": 0.00014784950496718048,
+      "joint_tau_loss": 0.007659614591443158,
+      "joint_feasibility_loss": 0.00012207908560199902
+    }
+  },
+  "kb_tiers": {
+    "full_3tier": {
+      "loss": 0.8311278084491162
+    },
+    "semantic_only": {
+      "loss": 1.7199909585587523
+    },
+    "semantic_geometric": {
+      "loss": 1.7319764380759382
+    },
+    "semantic_operational": {
+      "loss": 0.9237091274971657
+    }
+  },
+  "task_families": {
+    "pick": {
+      "mean_loss": 0.00016109159675744384,
+      "count": 149
+    },
+    "place": {
+      "mean_loss": 0.00015245121930575079,
+      "count": 149
+    },
+    "insert": {
+      "mean_loss": 0.00014497529914875705,
+      "count": 149
+    },
+    "pour": {
+      "mean_loss": 0.00013504160589897137,
+      "count": 149
+    },
+    "tool_use": {
+      "mean_loss": 0.00014284593059021928,
+      "count": 149
+    }
+  },
+  "num_records": 1492
+}

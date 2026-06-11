@@ -1,0 +1,6 @@
+module,training_data,best_epoch,primary_validation_metric,value
+Layer I / S2P2E-RAG,1492 objects; 7405 KB entries,21,pose_mae,0.009293884355971154
+Layer II / PPE,4096 synthetic inverse-dynamics trajectories,12,rmse,0.16348000336438417
+Layer III / residual control,4096 residual-control trajectories,15,residual_loss,0.00020676053327406407
+Joint S2P2E,1492 3D objects x 5 tasks,4,joint_val_loss,0.00816420266563271
+Actor-Critic DROID bridge,6235 DROID transitions,20,critic_loss,8.43684075066907e-09

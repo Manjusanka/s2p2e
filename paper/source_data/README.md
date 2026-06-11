@@ -27,6 +27,7 @@ The source-data package is organized around final measured values, sample defini
 - `dense_clutter_split.csv`: dense-clutter evaluation slice.
 - `value_provenance_registry.csv`: internal value-provenance audit trail retained for traceability.
 - `historical_value_audit.csv`: internal historical value-tracking file retained for traceability.
+- `training_expansion_summary.csv`: expanded GPU training and data-scale summary for S2P2E-RAG, PPE, residual control, joint S2P2E, and the DROID policy bridge.
 
 ## Field Convention
 

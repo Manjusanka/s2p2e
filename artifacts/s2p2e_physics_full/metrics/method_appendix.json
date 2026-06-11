@@ -1,0 +1,22 @@
+{
+  "training_protocol": {
+    "layer1": {
+      "embedding_dim": 512,
+      "retrieval_topk": 5,
+      "lambda_pose": 5.0,
+      "lambda_gripper": 1.0,
+      "lambda_retrieval": 0.2
+    },
+    "layer2": {
+      "ppe_hidden_dim": 512,
+      "ppe_layers": 4,
+      "lambda_physics": 0.1,
+      "trajectory_length": 32
+    },
+    "layer3": {
+      "history_length": 8,
+      "clip_ratio": 0.2,
+      "lambda_gate": 0.5
+    }
+  }
+}
