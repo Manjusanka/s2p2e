@@ -2,3 +2,4 @@
 *.tfrecord-* filter=lfs diff=lfs merge=lfs -text
 artifacts/s2p2e_rag_full/kb/*.json filter=lfs diff=lfs merge=lfs -text
 public_data/s2p2e_rag_dataset/*.jsonl filter=lfs diff=lfs merge=lfs -text
+public_data/s2p2e_rag_quality/*.jsonl filter=lfs diff=lfs merge=lfs -text

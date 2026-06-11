@@ -1,0 +1,42 @@
+{
+  "num_scored_entries": 68960,
+  "num_compressed_entries": 20688,
+  "compression_ratio": 0.3,
+  "quality_mean_full": 0.8726309527895844,
+  "quality_mean_compressed": 0.9252216776390686,
+  "uncertainty_mean_full": 0.004758161322444041,
+  "uncertainty_mean_compressed": 0.00445894601752976,
+  "diversity_lambda": 0.06,
+  "uncertainty_lambda": 0.25,
+  "mc_samples": 5,
+  "min_task_fraction": 0.08,
+  "task_counts_compressed": {
+    "pick": 6258,
+    "place": 7494,
+    "insert": 1655,
+    "pour": 1655,
+    "tool_use": 3626
+  },
+  "category_counts_compressed": {
+    "sofa": 2061,
+    "bottle": 1718,
+    "bookshelf": 1670,
+    "objaverse_asset": 1314,
+    "guitar": 1048,
+    "bed": 1016,
+    "table": 857,
+    "vase": 812,
+    "tv_stand": 794,
+    "car": 750,
+    "mantel": 639,
+    "keyboard": 605,
+    "bench": 594,
+    "airplane": 508,
+    "desk": 502,
+    "monitor": 493,
+    "curtain": 480,
+    "glass_box": 468,
+    "door": 394,
+    "chair": 358
+  }
+}

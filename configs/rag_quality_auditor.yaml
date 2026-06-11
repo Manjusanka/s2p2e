@@ -1,0 +1,21 @@
+seed: 42
+run_name: rag_quality_auditor
+artifacts_dir: artifacts
+
+data:
+  entries_path: public_data/s2p2e_rag_dataset/entries.jsonl
+  val_ratio: 0.1
+  compression_ratio: 0.30
+  diversity_lambda: 0.06
+  uncertainty_lambda: 0.25
+  mc_samples: 5
+  min_task_fraction: 0.08
+
+training:
+  device: cuda
+  batch_size: 512
+  hidden_dim: 512
+  depth: 4
+  lr: 0.0005
+  weight_decay: 0.0001
+  epochs: 40

@@ -40,6 +40,14 @@
 - Entry schema: raw model vectors plus object priors, task phase labels, geometry summaries, operational summaries, physics proxies, quality flags, and provenance
 - Intended usage: Layer I RAG training, KB-tier ablations, open retrieval dataset release, and manuscript source-data support
 
+### S2P2E-RAG-QA
+
+- Current local location: `public_data/s2p2e_rag_quality/`
+- Generated from: S2P2E-RAG entries and the learned `RAGQualityAuditor`
+- Current size: 68,960 scored entries and 20,688 QA-D compressed entries
+- Selection paradigm: semantic grounding, geometric-action consistency, physics feasibility, retrieval utility, MC-dropout uncertainty, and task/category/source diversity
+- Intended usage: high-quality compressed retrieval memory, data-quality ablations, and open dataset contribution
+
 ### RH20T
 
 - Official page: [RH20T](https://rh20t.github.io/)

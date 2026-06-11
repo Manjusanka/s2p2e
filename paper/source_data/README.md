@@ -29,6 +29,8 @@ The source-data package is organized around final measured values, sample defini
 - `historical_value_audit.csv`: internal historical value-tracking file retained for traceability.
 - `training_expansion_summary.csv`: expanded GPU training and data-scale summary for S2P2E-RAG, PPE, residual control, joint S2P2E, and the DROID policy bridge.
 - `rag_dataset_schema_summary.csv`: machine-readable summary of the enriched S2P2E-RAG v2 field groups used to document the open retrieval dataset contribution.
+- `rag_quality_compression_summary.csv`: source-data summary for the learned S2P2E-RAG-QA auditor and QA-D compressed dataset.
+- `rag_quality_compression_eval.csv`: split-level comparison of full versus QA-D compressed retrieval memory.
 
 ## Field Convention
 

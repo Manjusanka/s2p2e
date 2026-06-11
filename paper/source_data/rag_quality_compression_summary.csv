@@ -1,0 +1,9 @@
+metric,value,unit,provenance
+full_entries,68960,entries,public_data/s2p2e_rag_dataset/entries.jsonl
+compressed_entries,20688,entries,public_data/s2p2e_rag_quality/compressed_entries.jsonl
+compression_ratio,0.3,fraction,configs/rag_quality_auditor.yaml
+full_mean_quality,0.8726309527895844,score,RAGQualityAuditor
+compressed_mean_quality,0.9252216776390686,score,RAGQualityAuditor
+full_mean_uncertainty,0.004758161322444041,score,RAGQualityAuditor
+compressed_mean_uncertainty,0.00445894601752976,score,RAGQualityAuditor
+best_val_mae,0.005790890660136938,score,artifacts/rag_quality_auditor/metrics.json

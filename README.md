@@ -19,6 +19,7 @@ https://github.com/Manjusanka/s2p2e
 - Paper source data: machine-readable exports under `paper/source_data/`.
 - Local data subset: ShapeNet/ModelNet-style point clouds, Objaverse meshes tracked with Git LFS, DROID TFRecord shards, and converted DROID JSONL transitions.
 - S2P2E-RAG dataset: the generated v2 retrieval dataset under `public_data/s2p2e_rag_dataset/`, including semantic, geometric, operational, physics-prior, and quality-audit fields.
+- S2P2E-RAG-QA dataset: the learned quality-audited and QA-D compressed retrieval subset under `public_data/s2p2e_rag_quality/`.
 
 ## Data Boundary
 
@@ -93,6 +94,7 @@ pytest tests -q
 - Experiment summaries: `artifacts/*/metrics/*.json`
 - Paper source data: `paper/source_data/*.csv`
 - S2P2E-RAG open dataset: `public_data/s2p2e_rag_dataset/`
+- S2P2E-RAG-QA compressed dataset: `public_data/s2p2e_rag_quality/`
 - Local 3D data subset: `shapenet/` and `objaverse/`
 - DROID subset: `public_data/droid_100/` and `public_data/droid_subset_jsonl/`
 
@@ -106,12 +108,15 @@ Objaverse meshes require Git LFS after cloning. For full-scale training beyond t
 
 The generated S2P2E-RAG dataset is the main project-native open data asset. It contains 68,960 enriched retrieval entries derived from 13,803 local 3D objects across five tabletop manipulation task families. The v2 schema keeps the raw semantic/geometric/operational supervision vectors and adds interpretable object priors, task phase sequences, geometry summaries, physics proxies, quality flags, and provenance fields for dataset-level auditing.
 
+The generated S2P2E-RAG-QA release adds a learned quality auditor and QA-D compression step. It scores all 68,960 entries, then exports a 20,688-entry compressed subset selected by quality, MC-dropout uncertainty, task-floor coverage, and category/source diversity.
+
 ## Documentation
 
 - [Architecture](docs/architecture.md)
 - [Data sources](docs/DATA_SOURCES.md)
 - [Data release notes](docs/DATA_RELEASE.md)
 - [S2P2E-RAG dataset card](public_data/s2p2e_rag_dataset/DATASET_CARD.md)
+- [S2P2E-RAG-QA dataset card](public_data/s2p2e_rag_quality/DATASET_CARD.md)
 - [Model cards](docs/MODEL_CARDS.md)
 - [Open-source checklist](docs/OPEN_SOURCE_CHECKLIST.md)
 - [Reproducibility](docs/REPRODUCIBILITY.md)

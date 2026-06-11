@@ -9,6 +9,7 @@ This repository includes the local release package prepared for review and repro
 - `public_data/droid_100/`: local DROID TFRecord subset used for Actor-Critic ingestion and conversion.
 - `public_data/droid_subset_jsonl/`: converted DROID transition files used by lightweight policy tests.
 - `public_data/s2p2e_rag_dataset/`: generated S2P2E-RAG retrieval dataset with semantic, geometric, operational, physics-prior, quality-audit, and provenance tiers.
+- `public_data/s2p2e_rag_quality/`: learned quality-audited S2P2E-RAG-QA release with scored entries and a QA-D compressed subset.
 - `paper/source_data/`: manuscript source-data CSV exports matching the submitted figures and tables.
 - `artifacts/`: selected trained checkpoints and metric JSON files used by the manuscript package.
 
@@ -33,3 +34,5 @@ The included local subset is sufficient for smoke tests and review-scale reprodu
 `public_data/s2p2e_rag_dataset/` is generated from the local 3D object subset and the S2P2E task vocabulary. It is project-native data rather than a mirrored upstream dataset, so it can be cited as the open S2P2E-RAG release in the manuscript. The current release contains 68,960 retrieval entries, deterministic train/val/test splits, category counts, task counts, a dataset card, and `SCHEMA.md`.
 
 Each entry keeps the raw training fields used by Layer I and adds a v2 interpretability layer: object/category priors, task-family and phase-sequence labels, geometry summaries, operational summaries, physics proxies, quality flags, and provenance. These fields make the data release inspectable without changing the model-facing vectors.
+
+`public_data/s2p2e_rag_quality/` further scores the generated retrieval entries with a learned quality auditor. The compressed subset keeps 20,688 entries from the 68,960-entry full release using quality, uncertainty, and diversity constraints.
