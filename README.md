@@ -18,7 +18,7 @@ https://github.com/Manjusanka/s2p2e
 - Checkpoints: best checkpoints used by the review-scale reproduction under `artifacts/`.
 - Paper source data: machine-readable exports under `paper/source_data/`.
 - Local data subset: ShapeNet/ModelNet-style point clouds, Objaverse meshes tracked with Git LFS, DROID TFRecord shards, and converted DROID JSONL transitions.
-- S2P2E-RAG dataset: the generated three-tier retrieval dataset under `public_data/s2p2e_rag_dataset/`.
+- S2P2E-RAG dataset: the generated v2 retrieval dataset under `public_data/s2p2e_rag_dataset/`, including semantic, geometric, operational, physics-prior, and quality-audit fields.
 
 ## Data Boundary
 
@@ -102,7 +102,7 @@ The committed DROID files are a local `droid_100` subset for interface testing a
 
 Objaverse meshes require Git LFS after cloning. For full-scale training beyond the included subset, use the manifests and reconstruction scripts described in [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md) and [docs/DATA_RELEASE.md](docs/DATA_RELEASE.md).
 
-The generated S2P2E-RAG dataset is the main project-native open data asset. It contains 7,405 semantic/geometric/operational retrieval entries derived from 1,492 local 3D objects across five tabletop manipulation task families.
+The generated S2P2E-RAG dataset is the main project-native open data asset. It contains 7,405 enriched retrieval entries derived from 1,492 local 3D objects across five tabletop manipulation task families. The v2 schema keeps the raw semantic/geometric/operational supervision vectors and adds interpretable object priors, task phase sequences, geometry summaries, physics proxies, quality flags, and provenance fields for dataset-level auditing.
 
 ## Documentation
 

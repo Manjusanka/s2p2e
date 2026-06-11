@@ -1,0 +1,13 @@
+field_group,field,description,source
+identity,entry_id,Stable row identifier for release and citation.,export script
+instruction,task_family,Task ontology grouping used for retrieval and ablation.,S2P2E task vocabulary
+instruction,phase_sequence,Ordered manipulation phases for the requested task.,S2P2E task vocabulary
+object,material_prior,Category-level material or rigidity prior.,category prior table
+object,preferred_grasp_region,Category-level grasp-region prior.,category prior table
+geometry_summary,extent_xyz,Object bounding-box dimensions used by pose proposal.,computed descriptor
+geometry_summary,curvature_l123,Principal-shape descriptor from the local KB.,computed descriptor
+geometry_summary,aspect_ratio,Scale-normalized elongation descriptor.,computed descriptor
+operational_summary,target_pose_xyzwg,Pose and gripper target used by Layer I supervision.,computed label
+operational_summary,contact_risk,Task-level contact-risk class for safety analysis.,task ontology
+physics_prior,mass_proxy_kg,Object-scale proxy mass for downstream dynamics checks.,computed prior
+quality_flags,task_id_matches,Consistency check between task label and operational vector.,validation check

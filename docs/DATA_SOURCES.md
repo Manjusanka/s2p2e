@@ -31,6 +31,7 @@
 - Current local location: `public_data/s2p2e_rag_dataset/`
 - Generated from: local 3D object subset, S2P2E task vocabulary, and semantic/geometric/operational tier construction
 - Current size: 7,405 retrieval entries from 1,492 objects across five task families
+- Entry schema: raw model vectors plus object priors, task phase labels, geometry summaries, operational summaries, physics proxies, quality flags, and provenance
 - Intended usage: Layer I RAG training, KB-tier ablations, open retrieval dataset release, and manuscript source-data support
 
 ### RH20T

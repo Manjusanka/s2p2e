@@ -21,13 +21,17 @@
     "test": 741
   },
   "fields": [
-    "object_id",
-    "dataset",
-    "category",
-    "task",
-    "semantic_text",
+    "entry_id",
+    "schema_version",
+    "object",
+    "instruction",
     "geometric",
-    "operational"
+    "operational",
+    "geometry_summary",
+    "operational_summary",
+    "physics_prior",
+    "quality_flags",
+    "provenance"
   ],
   "source_artifacts": {
     "kb_entries": "artifacts/s2p2e_rag_full/kb/kb_entries.json",

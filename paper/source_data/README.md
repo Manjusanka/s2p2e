@@ -28,6 +28,7 @@ The source-data package is organized around final measured values, sample defini
 - `value_provenance_registry.csv`: internal value-provenance audit trail retained for traceability.
 - `historical_value_audit.csv`: internal historical value-tracking file retained for traceability.
 - `training_expansion_summary.csv`: expanded GPU training and data-scale summary for S2P2E-RAG, PPE, residual control, joint S2P2E, and the DROID policy bridge.
+- `rag_dataset_schema_summary.csv`: machine-readable summary of the enriched S2P2E-RAG v2 field groups used to document the open retrieval dataset contribution.
 
 ## Field Convention
 

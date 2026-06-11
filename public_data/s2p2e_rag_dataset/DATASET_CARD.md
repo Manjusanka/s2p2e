@@ -27,3 +27,4 @@ This dataset is intended for retrieval-augmented pose proposal, manipulation kno
 - `train.jsonl`, `val.jsonl`, `test.jsonl`: deterministic split files.
 - `manifest.json`: dataset metadata.
 - `category_counts.json`, `task_counts.json`: dataset statistics.
+- `SCHEMA.md`: field-level description for the enriched v2 entry format.
