@@ -29,9 +29,11 @@ The current release uses MC-dropout uncertainty estimation, task-floor constrain
 - Compressed mean quality: 0.9252
 - Full mean uncertainty: 0.00476
 - Compressed mean uncertainty: 0.00446
+- Predicted compressed accept rate: 0.9422
 
 ## Files
 
 - `scored_entries.jsonl`: all S2P2E-RAG entries with `quality_audit` fields.
 - `compressed_entries.jsonl`: QA-D compressed high-quality subset.
 - `quality_manifest.json`: compression statistics and task/category counts.
+- `AUDIT_PROTOCOL.md`: manual validation protocol for replacing model-prefilled audit values with human review.
