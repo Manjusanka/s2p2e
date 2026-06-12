@@ -1,4 +1,4 @@
-# Manuscript Evidence Audit
+# Final Manuscript Evidence Audit
 
 Target journal: Nature Machine Intelligence
 
@@ -16,71 +16,85 @@ Audited materials:
 - `public_data/s2p2e_rag_quality/`
 - `artifacts/`
 
-## Summary
+## Overall Result
 
-The repository is organized to support the manuscript's bounded systems claim: retrieval-grounded pose proposal, inverse-dynamics feasibility filtering, and bounded residual execution control provide complementary improvements for tabletop language-driven manipulation. The evidence package includes source-data exports, training scripts, configurations, selected checkpoints, public-data conversion utilities, local dataset subsets, and two project-native retrieval-data releases.
+The repository and manuscript now support a bounded, submission-facing systems claim: S2P2E improves tabletop language-driven manipulation by separating semantic retrieval, physical feasibility filtering, and bounded residual execution control. The evidence package is internally consistent across the manuscript, supplementary information, source-data tables, repository documentation, released RAG datasets, and selected checkpoints.
 
-## Manuscript Package
+No blocking evidence-integrity issue was found in the final audit. The remaining caveats are scope limitations rather than contradictions: hardware validation is limited to the reported Franka tabletop regime, cross-embodiment results validate inverse-dynamics prediction rather than full downstream manipulation transfer, and DROID is used only as a secondary policy-bridge sanity check.
 
-The manuscript copy in `paper/` mirrors the submission-oriented Overleaf source. It uses a single-column format with line numbers, includes the current Data Availability and Code Availability statements, and cites the repository as:
+## Manuscript and Compilation Checks
 
-```text
-https://github.com/Manjusanka/s2p2e
-```
+Status: pass.
 
-The reference file `paper/references.bib` is included so that the manuscript source can be compiled from the repository copy.
+- The repository manuscript copy matches the Overleaf submission source for the main paper, supplementary information, references, and core RAG source-data files.
+- The main paper compiles with line numbers, single-column formatting, all manuscript figures, and the current bibliography.
+- The supplementary information compiles independently.
+- The main text frames generalization conservatively and avoids unsupported universal deployment claims.
+- The code and data availability statements point to the public repository: `https://github.com/Manjusanka/s2p2e`.
 
-## Source Data
+## Citation Audit
 
-The `paper/source_data/` directory contains machine-readable CSV exports for the main manuscript tables, figures, robustness slices, source-data accounting, RAG quality curves, and human audit summary ranges. The directory README documents the role of each file and the convention used for provenance fields.
+Status: pass with currentness improved.
 
-Key checks:
+- Recent VLA and robot foundation-model context is represented by OpenVLA, Octo, ManipLLM, CogACT, pi0, and pi0.5.
+- Spatial grounding and 3D action-prediction context is represented by Act3D, PolarNet, SpatialVLM, VoxPoser, RoboPoint, and SpatialVLA.
+- Retrieval-grounded robotics context is represented by SayCan, Code-as-Policies, GaussianGrasper, LERF, GraspSplats, RoboGround, RobMRAG, and Retrieval-Augmented Robots via Retrieve-Reason-Act.
+- Dataset and robot-learning scale context is represented by DROID and Open X-Embodiment.
+- Previously risky unverifiable placeholder-style references were removed in earlier cleanup; the current bibliography contains traceable arXiv, RSS, journal, or conference-style entries.
 
-- Main benchmark, module, robustness, and compute tables have corresponding CSV exports.
-- RAG quality compression and calibration curves have corresponding CSV exports.
-- Human audit ranges are recorded in `rag_quality_human_audit_summary.csv`.
-- Value provenance files are retained for traceability from manuscript values to source-data records.
+## Source-Data Traceability
 
-## Open Data
+Status: pass.
 
-The repository contains two project-native retrieval-data releases:
+Key manuscript values are backed by machine-readable source data:
 
-- `public_data/s2p2e_rag_dataset/`: S2P2E-RAG, containing 68,960 enriched retrieval entries with deterministic train/validation/test splits, manifest, schema, task counts, category counts, and dataset card.
-- `public_data/s2p2e_rag_quality/`: S2P2E-RAG-QA, containing scored entries, a 20,688-entry QA-D compressed subset, quality manifest, audit protocol, schema, and dataset card.
+- Main clutter benchmark: `paper/source_data/table_grasp_main.csv`
+- Knowledge-base ablation: `paper/source_data/table_kb_ablation.csv`
+- Physical-violation metrics: `paper/source_data/table_physical_violations.csv`
+- Force and contact metrics: `paper/source_data/table_force_tracking.csv` and `table_safety_tail_contact.csv`
+- Sim-to-real and stress tests: `paper/source_data/table_sim2real.csv` and `stress_test_sim2real.csv`
+- Unseen-object and dense-clutter slices: `unseen_object_split.csv` and `dense_clutter_split.csv`
+- RAG quality audit and compression: `rag_quality_*` source-data files
+- Claim-to-evidence accounting: `table_claim_sample_accounting.csv` and `value_provenance_registry.csv`
 
-The release also includes local public-data subsets and manifests for DROID, Objaverse, and ShapeNet/ModelNet-style assets. Large assets are documented as license-bound upstream data and are either included as local subsets or reconstructed through scripts and manifests.
+The major reported values, including 87.3% main GSR, 82.7% unseen-object GSR, 91.3% sim-to-real retention, 68,960 S2P2E-RAG entries, and 20,688 S2P2E-RAG-QA entries, are all present in source-data exports or repository manifests.
 
-## Code and Checkpoints
+## Open-Source Repository Audit
 
-The repository includes scripts for staged training, full-pipeline training, public-data conversion, RAG dataset export, quality-auditor training, compression evaluation, experiment export, and smoke tests.
+Status: pass.
 
-Selected checkpoints and run artifacts are present under `artifacts/`, including:
+The public repository includes:
 
-- `artifacts/s2p2e_g50/checkpoints/joint_best.pt`
-- `artifacts/s2p2e_g50/checkpoints/layer1_best.pt`
-- `artifacts/s2p2e_g50/checkpoints/layer2_best.pt`
-- `artifacts/s2p2e_g50/checkpoints/layer3_best.pt`
-- `artifacts/s2p2e_rag_full/checkpoints/layer1_best.pt`
-- `artifacts/s2p2e_physics_full/checkpoints/joint_best.pt`
-- `artifacts/actor_critic_droid/actor_critic_droid_best.pt`
-- `artifacts/actor_critic_droid_full/actor_critic_droid_best.pt`
+- Training, evaluation, data-conversion, RAG export, quality-auditor, and source-data export scripts.
+- Selected checkpoints under `artifacts/`, including the joint stack, layer-wise checkpoints, full RAG run, full physics run, and actor-critic DROID bridge run.
+- Released retrieval data under `public_data/s2p2e_rag_dataset/` and `public_data/s2p2e_rag_quality/`.
+- Dataset cards, schemas, manifests, split metadata, and audit protocol files.
+- The manuscript source, figures, bibliography, and source-data package needed to reproduce the paper tables and figures.
 
-## Claim Boundaries
+The repository intentionally excludes download caches, partial downloads, failed intermediate arrays, and non-release temporary artifacts.
 
-The manuscript is framed as a bounded tabletop manipulation study rather than a claim of unrestricted open-world deployment. The strongest directly supported claims are:
+## Claim Boundary Audit
+
+Status: pass with explicit caveats retained.
+
+Directly supported claims:
 
 - Retrieval improves cluttered semantic grounding under the reported benchmark protocol.
 - PPE reduces physically infeasible actions before execution.
-- Bounded residual control improves contact robustness once an action is selected.
-- S2P2E-RAG and S2P2E-RAG-QA provide inspectable, reusable retrieval-data assets with documented quality-control procedures.
+- Bounded residual control improves contact robustness after action selection.
+- S2P2E-RAG and S2P2E-RAG-QA provide inspectable retrieval-data assets with documented quality-control procedures.
 
-## Remaining Reader-Facing Caveats
+Claims intentionally not made:
 
-The evidence package intentionally keeps several boundaries explicit:
+- Universal open-world generalization.
+- Formal closed-loop safety guarantees.
+- Full downstream cross-robot deployment.
+- Complete manual certification of every released RAG entry.
 
-- Hardware evidence is limited to the reported Franka tabletop regime and stress-test conditions.
-- Cross-embodiment evidence validates inverse-dynamics portability rather than full downstream manipulation transfer.
-- The DROID policy-bridge experiment is supportive secondary evidence and is not used as the primary hardware benchmark.
-- External datasets and 3D assets remain subject to their upstream licenses and redistribution terms.
+These boundaries are visible in the discussion, supplementary information, data availability statement, and repository documentation.
 
-These caveats are reflected in the manuscript text, data-release notes, and documentation.
+## Final Submission Notes
+
+For journal upload, include only the submission-relevant source package: main manuscript, supplementary information, bibliography, figures, and source-data files. Internal planning documents, rendering screenshots, LaTeX auxiliary files, and local audit screenshots should not be uploaded as manuscript source files.
+
+The strongest remaining editorial risk is not evidence inconsistency; it is scope perception. The submission should continue to present S2P2E as a carefully bounded, auditable robotics systems contribution rather than as a universal general-purpose robot policy.
