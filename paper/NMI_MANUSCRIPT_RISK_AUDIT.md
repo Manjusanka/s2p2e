@@ -30,7 +30,7 @@ Status: pass.
 - The main paper compiles with line numbers, single-column formatting, all manuscript figures, and the current bibliography.
 - The supplementary information compiles independently.
 - The main text frames generalization conservatively and avoids unsupported universal deployment claims.
-- The code and data availability statements point to the public repository: `https://github.com/Manjusanka/s2p2e`.
+- The code and data availability statements point to a review-stage anonymous release archive for double-anonymised review; the public repository link is withheld until after review.
 
 ## Citation Audit
 

@@ -2,11 +2,7 @@
 
 This repository contains the code, configurations, checkpoints, source-data exports, and release data samples for **S2P2E: Auditable Physical Grounding for Language-Driven Robotic Manipulation**.
 
-The repository name is intentionally `s2p2e`, matching the manuscript availability statement and the planned GitHub repository:
-
-```text
-https://github.com/Manjusanka/s2p2e
-```
+During double-anonymised review, manuscript-facing availability statements refer to a review-stage anonymous release archive. The public repository link and author-identifying metadata should be disclosed after review according to the journal policy.
 
 ## What Is Included
 
