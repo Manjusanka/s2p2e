@@ -1,6 +1,6 @@
 # S2P2E
 
-This repository contains the code, configurations, checkpoints, source-data exports, and release data samples for **S2P2E: Physical Grounding for Language-Driven Robotic Manipulation**.
+This repository contains the code, configurations, checkpoints, source-data exports, and release data samples for **S2P2E: Auditable Physical Grounding for Language-Driven Robotic Manipulation**.
 
 The repository name is intentionally `s2p2e`, matching the manuscript availability statement and the planned GitHub repository:
 
