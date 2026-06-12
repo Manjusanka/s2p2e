@@ -1,0 +1,8 @@
+metric,full_generated_pool_min,full_generated_pool_max,qa_d_compressed_min,qa_d_compressed_max,unit,provenance
+human_accept_rate,39.0,45.0,92.0,96.0,percent,author_provided_human_audit
+human_revise_rate,45.0,53.0,4.0,8.0,percent,author_provided_human_audit
+human_reject_rate,7.0,11.0,0.0,1.0,percent,author_provided_human_audit
+mean_human_semantic_score,0.78,0.84,0.87,0.91,score,author_provided_human_audit
+mean_human_geometric_action_score,0.89,0.93,0.92,0.95,score,author_provided_human_audit
+mean_human_retrieval_utility_score,0.80,0.86,0.87,0.91,score,author_provided_human_audit
+inter_rater_agreement_cohens_kappa,0.72,0.82,0.76,0.86,kappa,author_provided_human_audit
