@@ -1,6 +1,6 @@
 # S2P2E
 
-This repository contains the code, configurations, checkpoints, source-data exports, and review-scale data samples for **S2P2E: Physical Grounding for Language-Driven Robotic Manipulation**.
+This repository contains the code, configurations, checkpoints, source-data exports, and release data samples for **S2P2E: Physical Grounding for Language-Driven Robotic Manipulation**.
 
 The repository name is intentionally `s2p2e`, matching the manuscript availability statement and the planned GitHub repository:
 
@@ -15,7 +15,7 @@ https://github.com/Manjusanka/s2p2e
 - Layer III: hierarchical residual control with `FrictionNet`, `LoadNet`, `NoiseNet`, and `GateNet`.
 - Policy bridge: PPE feature injection into an actor-critic policy, including DROID conversion and cross-embodiment dynamics augmentation.
 - Experiment stack: staged training, joint training, ablations, task-family analysis, KB-tier analysis, and end-to-end pipeline execution.
-- Checkpoints: best checkpoints used by the review-scale reproduction under `artifacts/`.
+- Checkpoints: best checkpoints used by the released reproduction under `artifacts/`.
 - Paper source data: machine-readable exports under `paper/source_data/`.
 - Local data subset: ShapeNet/ModelNet-style point clouds, Objaverse meshes tracked with Git LFS, DROID TFRecord shards, and converted DROID JSONL transitions.
 - S2P2E-RAG dataset: the generated v2 retrieval dataset under `public_data/s2p2e_rag_dataset/`, including semantic, geometric, operational, physics-prior, and quality-audit fields.
@@ -23,7 +23,7 @@ https://github.com/Manjusanka/s2p2e
 
 ## Data Boundary
 
-The release includes the local review-scale data subset that is present in this workspace. Large Objaverse `.glb` files are tracked with Git LFS. Download caches, partial downloads, and generated retrieval arrays are excluded so the repository remains reproducible rather than cache-dependent.
+The release includes the local data subset that is present in this workspace. Large Objaverse `.glb` files are tracked with Git LFS. Download caches, partial downloads, and generated retrieval arrays are excluded so the repository remains reproducible rather than cache-dependent.
 
 Use the scripts and manifests in `scripts/`, `configs/`, `docs/DATA_SOURCES.md`, and `public_data/dataset_manifest.json` to reconstruct larger assets under their original licenses.
 
@@ -100,7 +100,7 @@ pytest tests -q
 
 ## Data Notes
 
-The committed DROID files are a local `droid_100` subset for interface testing and review-scale reproduction. They are not a substitute for the complete DROID dataset.
+The committed DROID files are a local `droid_100` subset for interface testing and released reproduction. They are not a substitute for the complete DROID dataset.
 
 The expanded policy-bridge run mixes 6,235 converted DROID transitions with 32,768 cross-embodiment synthetic dynamics transitions, producing 39,003 Actor-Critic training/evaluation samples with a held-out validation split.
 

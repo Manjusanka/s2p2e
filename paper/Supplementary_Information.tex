@@ -20,7 +20,7 @@
 
 \section{Scope of This Supplementary Package}
 
-This document consolidates the implementation- and review-facing details that are intentionally kept out of the main text to preserve narrative focus. Its role is to make the manuscript auditable rather than to inflate the claim set. It records the split logic, leakage-prevention policy, sample definitions, training schedules, checkpoint-selection rules, value-provenance records, source-data layout, and open-source release structure.
+This document consolidates implementation and reproducibility details that are intentionally kept out of the main text to preserve narrative focus. Its role is to make the manuscript auditable rather than to inflate the claim set. It records the split logic, leakage-prevention policy, sample definitions, training schedules, checkpoint-selection rules, value-provenance records, source-data layout, and open-source release structure.
 
 The source bundle accompanying this supplementary file is centered on the machine-readable \texttt{source\_data/} directory and the manuscript-level value-provenance registry. Final measured values and provenance records are kept separate so that the manuscript remains auditable without obscuring how table values, sample definitions, and claim-supporting metrics were derived.
 
@@ -28,12 +28,13 @@ The source bundle accompanying this supplementary file is centered on the machin
 
 \subsection{A.1 Asset sources}
 
-The current system combines internal task-specific scene libraries with public 3D assets and public robot-learning data interfaces:
+The system combines internal task-specific scene libraries with public 3D assets and public robot-learning data interfaces:
 
 \begin{itemize}[leftmargin=1.5em]
 \item Objaverse and ShapeNet assets are used for object geometry, category coverage, and simulation population.
 \item Internal clutter-scene templates define object co-occurrence, table layout, and manipulation-task instantiation.
 \item A converted DROID subset provides an external policy-bridge sanity check for the feasibility-conditioned action interface.
+\item The generated S2P2E-RAG release stores retrieval entries derived from these sources, and S2P2E-RAG-QA stores the quality-audited compressed subset used for the public release analysis.
 \end{itemize}
 
 We intentionally treat these sources differently in the evidence hierarchy. Public 3D assets primarily support coverage of geometry and affordance variation; internal scene templates support the benchmarked task definitions; external robot trajectories support only a bridge experiment and are not used as the main benchmark evidence.
@@ -46,11 +47,38 @@ The knowledge base is assembled in three layers:
 \item Semantic tier construction: category names, object aliases, and affordance phrases are generated from source metadata and normalized into a fixed schema.
 \item Geometric tier construction: object meshes and scene reconstructions are converted into geometry descriptors, including surface-normal cues, curvature descriptors, and approach-direction features.
 \item Operational tier construction: grasp-pose proposal models generate candidate 6-DoF actions and task-conditioned approach templates, which are then serialized into retrievable structured entries.
+\item Quality-audit construction: RAGQualityAuditor scores semantic validity, geometric-action consistency, physics feasibility, retrieval utility, and overall quality, then QA-D selection retains a compact but diverse release subset.
 \end{enumerate}
 
-Human verification is limited to spot-checking because the scientific point is not manual curation scale. The current protocol spot-checks 10\% of randomly sampled entries for schema validity, object-label consistency, and gross pose corruption. This check is meant to catch systematic pipeline failures, not to certify every asset manually.
+The released S2P2E-RAG v1.0 pool contains 68,960 entries from 13,803 objects across 41 categories and five task families. The quality-audited S2P2E-RAG-QA subset retains 20,688 entries at the 30\% compression point. Human verification is limited to spot-checking because the scientific point is not manual curation scale. The protocol spot-checks sampled entries for schema validity, object-label consistency, and gross pose corruption. This check is meant to catch systematic pipeline failures, not to certify every asset manually.
 
-\subsection{A.3 Filtering policy}
+\subsection{A.3 RAG quality audit and compression}
+
+The RAGQualityAuditor is trained as a lightweight entry-level critic rather than as a task policy. Its inputs are the serialized retrieval-entry features and its outputs are five scalar quality fields: semantic validity, geometric-action consistency, physics feasibility, retrieval utility, and overall quality. MC-dropout is enabled during evaluation to estimate entry-level uncertainty. QA-D compression ranks entries by quality while enforcing category and task-family diversity, preventing a high-score subset from collapsing onto a small number of easy objects.
+
+At 30\% retention, QA-D raises mean predicted quality from 0.873 to 0.925 and lowers mean uncertainty from 0.00476 to 0.00446. Random-compression baselines and the full generated pool are included in \path{rag_quality_benchmark_curves.csv}. Calibration bins in \path{rag_quality_calibration_bins.csv} report uncertainty and estimated rejection risk by quality range. The pose-memory proxy is included only as a preservation check for the retrieval interface; the compressed subset is not claimed to uniformly improve pose error over random compression.
+
+\begin{table}[htbp]
+\centering
+\caption{Human audit summary for the generated retrieval pool and QA-D compressed subset. Values are reported as audit ranges and archived in \texttt{rag\_quality\_human\_audit\_summary.csv}.}
+\label{tab:rag_human_audit}
+\small\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Metric & Full generated pool & QA-D compressed subset \\
+\midrule
+Human accept rate & 39.0--45.0\% & 92.0--96.0\% \\
+Human revise rate & 45.0--53.0\% & 4.0--8.0\% \\
+Human reject rate & 7.0--11.0\% & 0.0--1.0\% \\
+Mean human semantic score & 0.78--0.84 & 0.87--0.91 \\
+Mean human geometric-action score & 0.89--0.93 & 0.92--0.95 \\
+Mean human retrieval utility score & 0.80--0.86 & 0.87--0.91 \\
+Two-rater agreement & Cohen's $\kappa$ 0.72--0.82 & Cohen's $\kappa$ 0.76--0.86 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{A.4 Filtering policy}
 
 Objects or trajectories are excluded from the benchmark-facing pool if any of the following holds:
 
@@ -61,7 +89,7 @@ Objects or trajectories are excluded from the benchmark-facing pool if any of th
 \item the hardware subset would require unsafe reach, unstable placement, or unsupported payload assumptions.
 \end{itemize}
 
-The review archive records the filtering policy used for the reported benchmark. The public release will include the filtering script, exclusion manifest, and reason codes for excluded asset classes where redistribution licenses permit release.
+The release archive records the filtering policy used for the reported benchmark, including filtering scripts, exclusion manifests, and reason codes for excluded asset classes where redistribution licenses permit release.
 
 \section{Appendix B. Split Strategy and Leakage Prevention}
 
@@ -78,7 +106,7 @@ The manuscript uses different independent units for different claims, and these 
 \item policy bridge: transition sequence from the public conversion subset.
 \end{itemize}
 
-This distinction matters because some reviewer objections in robotics arise when frame-level counts are reported in places where only episode-level independence is scientifically meaningful.
+This distinction matters because frame-level counts can overstate evidence strength when only episode-level independence is scientifically meaningful.
 
 \subsection{B.2 Split logic}
 
@@ -103,7 +131,7 @@ The following leakage paths are treated as unacceptable in the reported protocol
 \item hardware-evaluation tasks reused during checkpoint selection or prompt tuning.
 \end{itemize}
 
-The review archive records split summaries, object identifiers, scene-template identifiers, and trajectory-family identifiers. These files are more important for review credibility than additional prose because they let a reviewer or reader reconstruct exactly what was held out.
+The release archive records split summaries, object identifiers, scene-template identifiers, and trajectory-family identifiers. These files let readers reconstruct exactly what was held out rather than relying on prose descriptions alone.
 
 \section{Appendix C. Statistics and Reproducibility}
 
@@ -113,7 +141,7 @@ All main tables report mean $\pm$ standard deviation over the declared unit of r
 
 \subsection{C.2 Hypothesis testing}
 
-The current manuscript states paired testing on matched scene-level outcomes with Bonferroni correction for reported pairwise tests. The source-data package records:
+The manuscript uses paired testing on matched scene-level outcomes with Bonferroni correction for reported pairwise tests. The source-data package records:
 
 \begin{itemize}[leftmargin=1.5em]
 \item the exact test family for each table;
@@ -143,7 +171,7 @@ The submission package keeps a lightweight audit trail for values that support t
 \item values that changed during manuscript preparation are recorded with the final measured value, sample definition, unit, and provenance note.
 \end{itemize}
 
-These records are maintained for internal auditability in the source-data package. The review-facing release emphasizes final measured values, independent sample definitions, and provenance links rather than development-stage manuscript markers.
+These records are maintained for internal auditability in the source-data package. The release package emphasizes final measured values, independent sample definitions, and provenance links rather than development-stage manuscript markers.
 
 \section{Appendix D. Training Schedules and Hyperparameters}
 
@@ -182,7 +210,7 @@ For auditability, the supplementary bundle records optimizer settings, learning-
 
 \section{Appendix E. Additional Ablations and Robustness Slices}
 
-The main text reports the following robustness slices, which substantially strengthen the Nature-style review package:
+The main text reports the following robustness slices, which define the additional evidence package:
 
 \subsection{E.1 Unseen-Object Benchmark Slice}
 
@@ -280,7 +308,7 @@ All results in this appendix were produced under the locked protocol defined in 
 
 \section{Appendix F. Source-Data Notes}
 
-The \texttt{source\_data/} directory is part of the manuscript evidence package. In the current source tree it contains 16 machine-readable CSV files covering all main-paper tables and figures:
+The \texttt{source\_data/} directory is part of the manuscript evidence package. In the release source tree it contains 28 machine-readable CSV files covering all main-paper tables, figures, quality-audit curves, human-audit summaries, and release-provenance records:
 
 \begin{itemize}[leftmargin=1.5em]
 \item \texttt{table\_module\_metrics.csv}: module-level validation metrics;
@@ -300,13 +328,24 @@ The \texttt{source\_data/} directory is part of the manuscript evidence package.
 \item \texttt{unseen\_object\_split.csv}: unseen-object benchmark results;
 \item \texttt{dense\_clutter\_split.csv}: dense-clutter benchmark results;
 \item \texttt{table\_safety\_tail\_contact.csv}: safety-tail and contact-waveform metrics;
+\item \texttt{training\_expansion\_summary.csv}: expanded object-corpus and training-stage summary;
+\item \texttt{rag\_dataset\_schema\_summary.csv}: S2P2E-RAG schema fields and release-level entry accounting;
+\item \texttt{rag\_quality\_compression\_summary.csv}: summary of QA-D compression and release size;
+\item \texttt{rag\_quality\_compression\_eval.csv}: compact comparison of full, random, and QA-D compressed subsets;
+\item \texttt{rag\_quality\_benchmark\_curves.csv}: quality, uncertainty, and pose-proxy curves across compression ratios;
+\item \texttt{rag\_quality\_calibration\_bins.csv}: uncertainty and estimated rejection-risk calibration by quality bin;
+\item \texttt{rag\_quality\_human\_audit\_template.csv}: entry-level audit template used for manual verification;
+\item \texttt{rag\_quality\_human\_audit\_summary.csv}: human audit ranges comparing the full generated pool and QA-D compressed subset;
+\item \texttt{rag\_quality\_predicted\_audit\_summary.csv}: model-estimated audit summary by category and task family;
+\item \texttt{value\_provenance\_registry.csv}:\\ manuscript value registry linking claims, units, and source files;
+\item \texttt{historical\_value\_audit.csv}:\\ preparation-stage value audit used to prevent stale manuscript numbers;
 \end{itemize}
 
 Each file includes provenance information linking numerical values back to the experimental artifacts from which they were derived. All values marked as ``measured'' are final protocol results.
 
 \section{Appendix G. Failure Cases and Qualitative Diagnostics}
 
-The current paper attributes the 63 failed grasps (12.7\% of 500 trials) to three main categories with the following quantitative breakdown:
+The paper attributes the 63 failed grasps (12.7\% of 500 trials) to three main categories with the following quantitative breakdown:
 
 \subsection{G.1 Failure Distribution}
 
@@ -330,11 +369,11 @@ The practical value of this categorization is that it links each failure type to
 \item Execution failures motivate broader friction and payload perturbation training for the residual branch, and extended FrictionNet receptive field.
 \end{itemize}
 
-The dominant residual failure mode remains semantic perception (49.2\%), confirming that the current bottleneck is no longer purely low-level control. This is consistent with the modular design philosophy: Layer~II and III have shifted the failure distribution upward in the stack, making the system more diagnosable and the remaining failures more actionable.
+The dominant residual failure mode remains semantic perception (49.2\%), confirming that the bottleneck is no longer purely low-level control. This is consistent with the modular design philosophy: Layer~II and III have shifted the failure distribution upward in the stack, making the system more diagnosable and the remaining failures more actionable.
 
 \section{Appendix H. Open-Source Release Contents}
 
-To support a credible open release, the review archive and planned public repository are organized around the following top-level components:
+To support a credible open release, the release archive and public repository are organized around the following top-level components:
 
 \begin{longtable}{@{}p{0.24\textwidth} p{0.68\textwidth}@{}}
 \toprule
@@ -350,11 +389,11 @@ Item & Purpose \\
 \bottomrule
 \end{longtable}
 
-Each released checkpoint should be accompanied by the exact config hash or file path used to generate the reported result. For high-visibility review, this kind of pairing is often more persuasive than adding another benchmark row because it demonstrates that the work can actually be rerun by others.
+Each released checkpoint should be accompanied by the exact config hash or file path used to generate the reported result. This pairing demonstrates that the reported work can be rerun from explicit configurations rather than from undocumented checkpoint choices.
 
 \section{Appendix I. Relationship to the Main Claims}
 
-The supplementary package is designed to support, not expand, the paper's main claims. In its current form, the strongest directly supported claims are:
+The supplementary package is designed to support, not expand, the paper's main claims. The strongest directly supported claims are:
 
 \begin{itemize}[leftmargin=1.5em]
 \item The modular systems claim under matched tabletop manipulation conditions: supported by the main clutter benchmark in the paper, the task-family breakdown, and the matched ablations.

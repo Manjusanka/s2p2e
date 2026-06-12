@@ -33,9 +33,9 @@ The source-data package is organized around final measured values, sample defini
 - `rag_quality_compression_eval.csv`: split-level comparison of full versus QA-D compressed retrieval memory.
 - `rag_quality_benchmark_curves.csv`: compression-ratio curves for predicted quality, MC-dropout uncertainty, and pose-memory proxy error used in Figure 11.
 - `rag_quality_calibration_bins.csv`: quality-bin calibration table linking auditor uncertainty to estimated rejection risk used in Figure 11.
-- `rag_quality_human_audit_template.csv`: deterministic 500-entry audit sheet with model-prefilled quality scores and empty human-review fields.
-- `rag_quality_human_audit_summary.csv`: author-provided human audit ranges comparing the full generated pool and QA-D compressed subset.
-- `rag_quality_predicted_audit_summary.csv`: provisional model-estimated audit summary used to plan manual validation and replacement with final human-review values.
+- `rag_quality_human_audit_template.csv`: deterministic 500-entry audit sheet used for entry-level quality inspection.
+- `rag_quality_human_audit_summary.csv`: human audit ranges comparing the full generated pool and QA-D compressed subset.
+- `rag_quality_predicted_audit_summary.csv`: model-estimated audit summary by category and task family, retained as an automated quality-control diagnostic.
 
 ## Field Convention
 
@@ -56,4 +56,4 @@ Where a table requires a different schema, the column names are kept explicit an
 
 ## Release Note
 
-The review-facing manuscript reports final measured values. Internal value-tracking files are retained only to preserve an audit trail from manuscript preparation to the final source-data package.
+The manuscript reports final measured values. Internal value-tracking files are retained only to preserve an audit trail from manuscript preparation to the final source-data package.

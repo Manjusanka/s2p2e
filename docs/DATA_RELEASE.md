@@ -27,7 +27,7 @@ Use the scripts in `scripts/` and the manifests in `public_data/` to rebuild lar
 - `shapenet/models/`
 - `public_data/droid_100/1.0.0/`
 
-The included local subset is sufficient for smoke tests and review-scale reproduction. Larger training runs should reconstruct or mount the full upstream datasets under the same paths.
+The included local subset is sufficient for smoke tests and released reproduction. Larger training runs should reconstruct or mount the full upstream datasets under the same paths.
 
 ## Generated RAG Dataset
 

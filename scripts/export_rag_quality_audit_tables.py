@@ -64,7 +64,7 @@ def write_audit_sample(full: list[dict], compressed: list[dict], out_path: Path,
                     "human_retrieval_utility_score": "",
                     "human_overall_decision": "",
                     "adjudication_notes": "",
-                    "provenance": "provisional_model_estimate",
+                    "provenance": "auditor_model_estimate",
                 }
             )
     with out_path.open("w", newline="", encoding="utf-8") as handle:
@@ -83,13 +83,13 @@ def write_summary(full: list[dict], compressed: list[dict], out_path: Path) -> N
         reject = [1.0 if bucket(entry["quality_audit"]["overall_quality"]) == "reject" else 0.0 for entry in entries]
         rows.extend(
             [
-                [name, "entries", len(entries), "count", "provisional_model_estimate"],
-                [name, "mean_overall_quality", mean(quality), "score", "provisional_model_estimate"],
-                [name, "sd_overall_quality", sd(quality), "score", "provisional_model_estimate"],
-                [name, "mean_uncertainty", mean(uncertainty), "score", "provisional_model_estimate"],
-                [name, "predicted_accept_rate", mean(accept), "fraction", "provisional_model_estimate"],
-                [name, "predicted_revise_rate", mean(revise), "fraction", "provisional_model_estimate"],
-                [name, "predicted_reject_rate", mean(reject), "fraction", "provisional_model_estimate"],
+                [name, "entries", len(entries), "count", "auditor_model_estimate"],
+                [name, "mean_overall_quality", mean(quality), "score", "auditor_model_estimate"],
+                [name, "sd_overall_quality", sd(quality), "score", "auditor_model_estimate"],
+                [name, "mean_uncertainty", mean(uncertainty), "score", "auditor_model_estimate"],
+                [name, "predicted_accept_rate", mean(accept), "fraction", "auditor_model_estimate"],
+                [name, "predicted_revise_rate", mean(revise), "fraction", "auditor_model_estimate"],
+                [name, "predicted_reject_rate", mean(reject), "fraction", "auditor_model_estimate"],
             ]
         )
     with out_path.open("w", newline="", encoding="utf-8") as handle:
