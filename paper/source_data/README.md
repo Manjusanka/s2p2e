@@ -31,6 +31,8 @@ The source-data package is organized around final measured values, sample defini
 - `rag_dataset_schema_summary.csv`: machine-readable summary of the enriched S2P2E-RAG v2 field groups used to document the open retrieval dataset contribution.
 - `rag_quality_compression_summary.csv`: source-data summary for the learned S2P2E-RAG-QA auditor and QA-D compressed dataset.
 - `rag_quality_compression_eval.csv`: split-level comparison of full versus QA-D compressed retrieval memory.
+- `rag_quality_benchmark_curves.csv`: compression-ratio curves for predicted quality, MC-dropout uncertainty, and pose-memory proxy error used in Figure 11.
+- `rag_quality_calibration_bins.csv`: quality-bin calibration table linking auditor uncertainty to estimated rejection risk used in Figure 11.
 - `rag_quality_human_audit_template.csv`: deterministic 500-entry audit sheet with model-prefilled quality scores and empty human-review fields.
 - `rag_quality_predicted_audit_summary.csv`: provisional model-estimated audit summary used to plan manual validation and replacement with final human-review values.
 
