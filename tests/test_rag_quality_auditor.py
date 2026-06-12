@@ -4,6 +4,7 @@ from pathlib import Path
 import torch
 
 from scripts.train_rag_quality_auditor import RAGQualityDataset, select_diverse_entries, teacher_scores
+from scripts.run_rag_quality_benchmark import calibration_rows, pose_bin, split_entries, summarize_subset
 from s2p2e.models.rag_quality import RAGQualityAuditor
 
 
@@ -39,3 +40,15 @@ def test_diverse_selection_keeps_multiple_tasks():
     assert len(selected) == 5
     assert len({item["task"] for item in selected}) == 5
     assert all("selection_score" in item["quality_audit"] for item in selected)
+
+
+def test_rag_quality_benchmark_helpers():
+    lines = (ROOT / "public_data" / "s2p2e_rag_quality" / "scored_entries.jsonl").read_text(encoding="utf-8").splitlines()
+    entries = [json.loads(line) for line in lines[:10]]
+    summary = summarize_subset(entries, total=100)
+
+    assert set(split_entries(entries)).issuperset({"train", "val", "test"})
+    assert summary["entries"] == 10.0
+    assert 0.0 <= summary["mean_quality"] <= 1.0
+    assert ":" in pose_bin(entries[0])
+    assert calibration_rows(entries)

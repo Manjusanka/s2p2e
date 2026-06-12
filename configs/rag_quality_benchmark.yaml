@@ -1,0 +1,23 @@
+seed: 42
+run_name: rag_quality_benchmark
+artifacts_dir: artifacts
+
+data:
+  scored_entries: public_data/s2p2e_rag_quality/scored_entries.jsonl
+  ratios: [0.1, 0.2, 0.3, 0.5, 1.0]
+  random_repeats: 3
+  diversity_lambda: 0.06
+  pose_diversity_lambda: 0.08
+  pose_distribution_lambda: 0.12
+  min_task_fraction: 0.08
+
+model:
+  hidden_dim: 256
+  depth: 3
+
+training:
+  device: cuda
+  batch_size: 512
+  epochs: 12
+  lr: 0.0007
+  weight_decay: 0.0001
